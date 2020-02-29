@@ -1,0 +1,53 @@
+{
+  "version": 2,
+  "tables": [
+    {
+      "table": {
+        "schema": "public",
+        "name": "consolidacao"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "convenios"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "importacao_convenios"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "importacao_guias"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "prestadores_servicos"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "status_consolidacao"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "tipo_erro"
+      }
+    },
+    {
+      "table": {
+        "schema": "public",
+        "name": "tipo_prestador"
+      }
+    }
+  ]
+}
