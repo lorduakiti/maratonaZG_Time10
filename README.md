@@ -1,2 +1,0 @@
-# maratonaZG_Time10
-
