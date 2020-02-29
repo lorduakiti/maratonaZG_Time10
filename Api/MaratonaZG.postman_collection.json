@@ -1,0 +1,1194 @@
+{
+	"info": {
+		"_postman_id": "c1335bf6-f7ae-44ee-b599-163441e2a43a",
+		"name": "MaratonaZG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Importação Guia",
+			"item": [
+				{
+					"name": "Insert Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_guias\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"numeroGuia\": \"\",\r\n            \"nomeOperadora\":\"\",\r\n            \"ans\":\"\",\r\n            \"nomePrestador\":\"\",\r\n            \"cnpj\":\"\",\r\n            \"nomeBeneficiario\":\"\",\r\n            \"matricula\":\"\",\r\n            \"dataAtendimento\":\"\",\r\n            \"valorTotalGuia\":\"\",\r\n            \"numeroItem\":\"\",\r\n            \"codigo\":\"\",\r\n            \"nome\":\"\",\r\n            \"valorUnitario\":\"\",\r\n            \"quantidade\":\"\",\r\n            \"valorTotal\":\"\",\r\n            \"source\":\"\",\r\n            \"sistema\":\"\",\r\n            \"id_convenios\":\"\",\r\n            \"id_prestadores_servico\":\"\"\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_guias\"\r\n      },\r\n      \"$set\":{\r\n         \"nomeOperadora\":null,\r\n         \"ans\":null,\r\n         \"nomePrestador\":null,\r\n         \"cnpj\":null,\r\n         \"nomeBeneficiario\":null,\r\n         \"matricula\":null,\r\n         \"dataAtendimento\":null,\r\n         \"valorTotalGuia\":null,\r\n         \"numeroItem\":null,\r\n         \"codigo\":null,\r\n         \"nome\":null,\r\n         \"valorUnitario\":null,\r\n         \"quantidade\":null,\r\n         \"valorTotal\":null,\r\n         \"source\":null,\r\n         \"sistema\":null,\r\n         \"id_convenios\":null,\r\n         \"id_prestadores_servico\":null,\r\n         \"deleted_at\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":8\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_guias\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_guias\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ad77f8c5-0594-48ff-8da5-6d149793621e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "fcfe3c7e-69aa-4ca6-b45b-d6c6e928d2ef",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Importacao Convenios",
+			"item": [
+				{
+					"name": "Insert Convenio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"convenio\":\"\",\r\n            \"data_pagamento\":null,\r\n            \"numero_protocolo\":null,\r\n            \"matricula\":null,\r\n            \"nome\":null,\r\n            \"numero_guia\":null,\r\n            \"ng_prest\":null,\r\n            \"senha_guia\":null,\r\n            \"codigo_produto\":null,\r\n            \"descricao_produto\":null,\r\n            \"valor_apresentado\":null,\r\n            \"valor_pago\":null,\r\n            \"valor_glosa\":null,\r\n            \"descricao_motivo\":null,\r\n            \"codigo_motivo\":null,\r\n            \"source\":null,\r\n            \"lote_importacao\":null,\r\n            \"id_convenio\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"data_pagamento\":null,\r\n         \"numero_protocolo\":null,\r\n         \"matricula\":null,\r\n         \"nome\":null,\r\n         \"numero_guia\":null,\r\n         \"ng_prest\":null,\r\n         \"senha_guia\":null,\r\n         \"codigo_produto\":null,\r\n         \"descricao_produto\":null,\r\n         \"valor_apresentado\":null,\r\n         \"valor_pago\":null,\r\n         \"valor_glosa\":null,\r\n         \"descricao_motivo\":null,\r\n         \"codigo_motivo\":null,\r\n         \"source\":null,\r\n         \"lote_importacao\":null,\r\n         \"id_convenio\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":3\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Convenios",
+			"item": [
+				{
+					"name": "Insert Convenio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"codigo\":\"1\",\r\n            \"nome\":\"\",\r\n            \"link\":null,\r\n            \"tipo_robo\":null,\r\n            \"tipo\":null,\r\n            \"status\":null,\r\n            \"ativo\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"link\":null,\r\n         \"tipo_robo\":null,\r\n         \"tipo\":null,\r\n         \"status\":null,\r\n         \"ativo\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":4\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Prestadores servicos",
+			"item": [
+				{
+					"name": "Insert prestadores_servicos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"prestadores_servicos\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"codigo\":\"1\",\r\n            \"nome\":\"a\",\r\n            \"descricao\":null,\r\n            \"status\":null,\r\n            \"ativo\":null,\r\n            \"id_tipo_prestador\":null,\r\n            \"deleted_at\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - prestadores_servicos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"prestadores_servicos\"\r\n      },\r\n      \"$set\":{\r\n         \"nome\":\"\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":1\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"prestadores_servicos\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"prestadores_servicos\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Importacao Convenios Copy Copy Copy",
+			"item": [
+				{
+					"name": "Insert Convenio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"convenio\":\"\",\r\n            \"data_pagamento\":null,\r\n            \"numero_protocolo\":null,\r\n            \"matricula\":null,\r\n            \"nome\":null,\r\n            \"numero_guia\":null,\r\n            \"ng_prest\":null,\r\n            \"senha_guia\":null,\r\n            \"codigo_produto\":null,\r\n            \"descricao_produto\":null,\r\n            \"valor_apresentado\":null,\r\n            \"valor_pago\":null,\r\n            \"valor_glosa\":null,\r\n            \"descricao_motivo\":null,\r\n            \"codigo_motivo\":null,\r\n            \"source\":null,\r\n            \"lote_importacao\":null,\r\n            \"id_convenio\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"data_pagamento\":null,\r\n         \"numero_protocolo\":null,\r\n         \"matricula\":null,\r\n         \"nome\":null,\r\n         \"numero_guia\":null,\r\n         \"ng_prest\":null,\r\n         \"senha_guia\":null,\r\n         \"codigo_produto\":null,\r\n         \"descricao_produto\":null,\r\n         \"valor_apresentado\":null,\r\n         \"valor_pago\":null,\r\n         \"valor_glosa\":null,\r\n         \"descricao_motivo\":null,\r\n         \"codigo_motivo\":null,\r\n         \"source\":null,\r\n         \"lote_importacao\":null,\r\n         \"id_convenio\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":3\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Importacao Convenios Copy Copy Copy",
+			"item": [
+				{
+					"name": "Insert Convenio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"convenio\":\"\",\r\n            \"data_pagamento\":null,\r\n            \"numero_protocolo\":null,\r\n            \"matricula\":null,\r\n            \"nome\":null,\r\n            \"numero_guia\":null,\r\n            \"ng_prest\":null,\r\n            \"senha_guia\":null,\r\n            \"codigo_produto\":null,\r\n            \"descricao_produto\":null,\r\n            \"valor_apresentado\":null,\r\n            \"valor_pago\":null,\r\n            \"valor_glosa\":null,\r\n            \"descricao_motivo\":null,\r\n            \"codigo_motivo\":null,\r\n            \"source\":null,\r\n            \"lote_importacao\":null,\r\n            \"id_convenio\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"data_pagamento\":null,\r\n         \"numero_protocolo\":null,\r\n         \"matricula\":null,\r\n         \"nome\":null,\r\n         \"numero_guia\":null,\r\n         \"ng_prest\":null,\r\n         \"senha_guia\":null,\r\n         \"codigo_produto\":null,\r\n         \"descricao_produto\":null,\r\n         \"valor_apresentado\":null,\r\n         \"valor_pago\":null,\r\n         \"valor_glosa\":null,\r\n         \"descricao_motivo\":null,\r\n         \"codigo_motivo\":null,\r\n         \"source\":null,\r\n         \"lote_importacao\":null,\r\n         \"id_convenio\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":3\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Importacao Convenios Copy Copy Copy",
+			"item": [
+				{
+					"name": "Insert Convenio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"convenio\":\"\",\r\n            \"data_pagamento\":null,\r\n            \"numero_protocolo\":null,\r\n            \"matricula\":null,\r\n            \"nome\":null,\r\n            \"numero_guia\":null,\r\n            \"ng_prest\":null,\r\n            \"senha_guia\":null,\r\n            \"codigo_produto\":null,\r\n            \"descricao_produto\":null,\r\n            \"valor_apresentado\":null,\r\n            \"valor_pago\":null,\r\n            \"valor_glosa\":null,\r\n            \"descricao_motivo\":null,\r\n            \"codigo_motivo\":null,\r\n            \"source\":null,\r\n            \"lote_importacao\":null,\r\n            \"id_convenio\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"data_pagamento\":null,\r\n         \"numero_protocolo\":null,\r\n         \"matricula\":null,\r\n         \"nome\":null,\r\n         \"numero_guia\":null,\r\n         \"ng_prest\":null,\r\n         \"senha_guia\":null,\r\n         \"codigo_produto\":null,\r\n         \"descricao_produto\":null,\r\n         \"valor_apresentado\":null,\r\n         \"valor_pago\":null,\r\n         \"valor_glosa\":null,\r\n         \"descricao_motivo\":null,\r\n         \"codigo_motivo\":null,\r\n         \"source\":null,\r\n         \"lote_importacao\":null,\r\n         \"id_convenio\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":3\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Importacao Convenios Copy Copy Copy",
+			"item": [
+				{
+					"name": "Insert Convenio",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"insert\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"objects\":[\r\n         {\r\n            \"convenio\":\"\",\r\n            \"data_pagamento\":null,\r\n            \"numero_protocolo\":null,\r\n            \"matricula\":null,\r\n            \"nome\":null,\r\n            \"numero_guia\":null,\r\n            \"ng_prest\":null,\r\n            \"senha_guia\":null,\r\n            \"codigo_produto\":null,\r\n            \"descricao_produto\":null,\r\n            \"valor_apresentado\":null,\r\n            \"valor_pago\":null,\r\n            \"valor_glosa\":null,\r\n            \"descricao_motivo\":null,\r\n            \"codigo_motivo\":null,\r\n            \"source\":null,\r\n            \"lote_importacao\":null,\r\n            \"id_convenio\":null\r\n         }\r\n      ],\r\n      \"returning\":[\r\n\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update  - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"data_pagamento\":null,\r\n         \"numero_protocolo\":null,\r\n         \"matricula\":null,\r\n         \"nome\":null,\r\n         \"numero_guia\":null,\r\n         \"ng_prest\":null,\r\n         \"senha_guia\":null,\r\n         \"codigo_produto\":null,\r\n         \"descricao_produto\":null,\r\n         \"valor_apresentado\":null,\r\n         \"valor_pago\":null,\r\n         \"valor_glosa\":null,\r\n         \"descricao_motivo\":null,\r\n         \"codigo_motivo\":null,\r\n         \"source\":null,\r\n         \"lote_importacao\":null,\r\n         \"id_convenio\":null\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":3\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Logico - Convenios",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"update\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"schema\":\"public\",\r\n         \"name\":\"importacao_convenios\"\r\n      },\r\n      \"$set\":{\r\n         \"deleted_at\": \"2020-02-29T18:21:56.361989+00:00\"\r\n      },\r\n      \"$default\":[\r\n\r\n      ],\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Fisico - Guia",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"type\":\"delete\",\r\n   \"args\":{\r\n      \"table\":{\r\n         \"name\":\"importacao_convenios\",\r\n         \"schema\":\"public\"\r\n      },\r\n      \"where\":{\r\n         \"id\":5\r\n      }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url_base}}",
+							"host": [
+								"{{url_base}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6df61aea-98ac-4483-a5d5-d9022c27ace3",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "788b4184-6f27-4ef3-a908-d4d1a3e80ce0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
