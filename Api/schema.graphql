@@ -1,0 +1,4138 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+scalar bigint
+
+# expression to compare columns of type bigint. All fields are combined with logical 'AND'.
+input bigint_comparison_exp {
+  _eq: bigint
+  _gt: bigint
+  _gte: bigint
+  _in: [bigint!]
+  _is_null: Boolean
+  _lt: bigint
+  _lte: bigint
+  _neq: bigint
+  _nin: [bigint!]
+}
+
+scalar bpchar
+
+# expression to compare columns of type bpchar. All fields are combined with logical 'AND'.
+input bpchar_comparison_exp {
+  _eq: bpchar
+  _gt: bpchar
+  _gte: bpchar
+  _in: [bpchar!]
+  _is_null: Boolean
+  _lt: bpchar
+  _lte: bpchar
+  _neq: bpchar
+  _nin: [bpchar!]
+}
+
+# columns and relationships of "consolidacao"
+type consolidacao {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  divergencias(
+    # JSON select path
+    path: String
+  ): jsonb
+  id: Int!
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+  updated_at: timestamptz
+}
+
+# aggregated selection of "consolidacao"
+type consolidacao_aggregate {
+  aggregate: consolidacao_aggregate_fields
+  nodes: [consolidacao!]!
+}
+
+# aggregate fields of "consolidacao"
+type consolidacao_aggregate_fields {
+  avg: consolidacao_avg_fields
+  count(columns: [consolidacao_select_column!], distinct: Boolean): Int
+  max: consolidacao_max_fields
+  min: consolidacao_min_fields
+  stddev: consolidacao_stddev_fields
+  stddev_pop: consolidacao_stddev_pop_fields
+  stddev_samp: consolidacao_stddev_samp_fields
+  sum: consolidacao_sum_fields
+  var_pop: consolidacao_var_pop_fields
+  var_samp: consolidacao_var_samp_fields
+  variance: consolidacao_variance_fields
+}
+
+# order by aggregate values of table "consolidacao"
+input consolidacao_aggregate_order_by {
+  avg: consolidacao_avg_order_by
+  count: order_by
+  max: consolidacao_max_order_by
+  min: consolidacao_min_order_by
+  stddev: consolidacao_stddev_order_by
+  stddev_pop: consolidacao_stddev_pop_order_by
+  stddev_samp: consolidacao_stddev_samp_order_by
+  sum: consolidacao_sum_order_by
+  var_pop: consolidacao_var_pop_order_by
+  var_samp: consolidacao_var_samp_order_by
+  variance: consolidacao_variance_order_by
+}
+
+# append existing jsonb value of filtered columns with new jsonb value
+input consolidacao_append_input {
+  divergencias: jsonb
+}
+
+# input type for inserting array relation for remote table "consolidacao"
+input consolidacao_arr_rel_insert_input {
+  data: [consolidacao_insert_input!]!
+  on_conflict: consolidacao_on_conflict
+}
+
+# aggregate avg on columns
+type consolidacao_avg_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by avg() on columns of table "consolidacao"
+input consolidacao_avg_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# Boolean expression to filter rows from the table "consolidacao". All fields are combined with a logical 'AND'.
+input consolidacao_bool_exp {
+  _and: [consolidacao_bool_exp]
+  _not: consolidacao_bool_exp
+  _or: [consolidacao_bool_exp]
+  created_at: timestamptz_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  divergencias: jsonb_comparison_exp
+  id: Int_comparison_exp
+  id_importacao_convenios: Int_comparison_exp
+  id_importacao_guias: Int_comparison_exp
+  id_situacao_consolidacao: Int_comparison_exp
+  id_tipo_erro: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# unique or primary key constraints on table "consolidacao"
+enum consolidacao_constraint {
+  # unique or primary key constraint
+  consolidacao_pkey
+}
+
+# delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+input consolidacao_delete_at_path_input {
+  divergencias: [String]
+}
+
+# delete the array element with specified index (negative integers count from the
+# end). throws an error if top level container is not an array
+input consolidacao_delete_elem_input {
+  divergencias: Int
+}
+
+# delete key/value pair or string element. key/value pairs are matched based on their key value
+input consolidacao_delete_key_input {
+  divergencias: String
+}
+
+# input type for incrementing integer columne in table "consolidacao"
+input consolidacao_inc_input {
+  id: Int
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+}
+
+# input type for inserting data into table "consolidacao"
+input consolidacao_insert_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  divergencias: jsonb
+  id: Int
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+  updated_at: timestamptz
+}
+
+# aggregate max on columns
+type consolidacao_max_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "consolidacao"
+input consolidacao_max_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type consolidacao_min_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "consolidacao"
+input consolidacao_min_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+  updated_at: order_by
+}
+
+# response of any mutation on the table "consolidacao"
+type consolidacao_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [consolidacao!]!
+}
+
+# input type for inserting object relation for remote table "consolidacao"
+input consolidacao_obj_rel_insert_input {
+  data: consolidacao_insert_input!
+  on_conflict: consolidacao_on_conflict
+}
+
+# on conflict condition type for table "consolidacao"
+input consolidacao_on_conflict {
+  constraint: consolidacao_constraint!
+  update_columns: [consolidacao_update_column!]!
+  where: consolidacao_bool_exp
+}
+
+# ordering options when selecting data from "consolidacao"
+input consolidacao_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  divergencias: order_by
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+  updated_at: order_by
+}
+
+# prepend existing jsonb value of filtered columns with new jsonb value
+input consolidacao_prepend_input {
+  divergencias: jsonb
+}
+
+# select columns of table "consolidacao"
+enum consolidacao_select_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  divergencias
+
+  # column name
+  id
+
+  # column name
+  id_importacao_convenios
+
+  # column name
+  id_importacao_guias
+
+  # column name
+  id_situacao_consolidacao
+
+  # column name
+  id_tipo_erro
+
+  # column name
+  updated_at
+}
+
+# input type for updating data in table "consolidacao"
+input consolidacao_set_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  divergencias: jsonb
+  id: Int
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+  updated_at: timestamptz
+}
+
+# aggregate stddev on columns
+type consolidacao_stddev_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by stddev() on columns of table "consolidacao"
+input consolidacao_stddev_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# aggregate stddev_pop on columns
+type consolidacao_stddev_pop_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by stddev_pop() on columns of table "consolidacao"
+input consolidacao_stddev_pop_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# aggregate stddev_samp on columns
+type consolidacao_stddev_samp_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by stddev_samp() on columns of table "consolidacao"
+input consolidacao_stddev_samp_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# aggregate sum on columns
+type consolidacao_sum_fields {
+  id: Int
+  id_importacao_convenios: Int
+  id_importacao_guias: Int
+  id_situacao_consolidacao: Int
+  id_tipo_erro: Int
+}
+
+# order by sum() on columns of table "consolidacao"
+input consolidacao_sum_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# update columns of table "consolidacao"
+enum consolidacao_update_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  divergencias
+
+  # column name
+  id
+
+  # column name
+  id_importacao_convenios
+
+  # column name
+  id_importacao_guias
+
+  # column name
+  id_situacao_consolidacao
+
+  # column name
+  id_tipo_erro
+
+  # column name
+  updated_at
+}
+
+# aggregate var_pop on columns
+type consolidacao_var_pop_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by var_pop() on columns of table "consolidacao"
+input consolidacao_var_pop_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# aggregate var_samp on columns
+type consolidacao_var_samp_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by var_samp() on columns of table "consolidacao"
+input consolidacao_var_samp_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# aggregate variance on columns
+type consolidacao_variance_fields {
+  id: Float
+  id_importacao_convenios: Float
+  id_importacao_guias: Float
+  id_situacao_consolidacao: Float
+  id_tipo_erro: Float
+}
+
+# order by variance() on columns of table "consolidacao"
+input consolidacao_variance_order_by {
+  id: order_by
+  id_importacao_convenios: order_by
+  id_importacao_guias: order_by
+  id_situacao_consolidacao: order_by
+  id_tipo_erro: order_by
+}
+
+# columns and relationships of "convenios"
+type convenios {
+  ativo: Int
+  codigo: String!
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int!
+  link: String
+  nome: String!
+  status: bpchar
+  tipo: String
+  tipo_robo: String
+  updated_at: timestamptz
+}
+
+# aggregated selection of "convenios"
+type convenios_aggregate {
+  aggregate: convenios_aggregate_fields
+  nodes: [convenios!]!
+}
+
+# aggregate fields of "convenios"
+type convenios_aggregate_fields {
+  avg: convenios_avg_fields
+  count(columns: [convenios_select_column!], distinct: Boolean): Int
+  max: convenios_max_fields
+  min: convenios_min_fields
+  stddev: convenios_stddev_fields
+  stddev_pop: convenios_stddev_pop_fields
+  stddev_samp: convenios_stddev_samp_fields
+  sum: convenios_sum_fields
+  var_pop: convenios_var_pop_fields
+  var_samp: convenios_var_samp_fields
+  variance: convenios_variance_fields
+}
+
+# order by aggregate values of table "convenios"
+input convenios_aggregate_order_by {
+  avg: convenios_avg_order_by
+  count: order_by
+  max: convenios_max_order_by
+  min: convenios_min_order_by
+  stddev: convenios_stddev_order_by
+  stddev_pop: convenios_stddev_pop_order_by
+  stddev_samp: convenios_stddev_samp_order_by
+  sum: convenios_sum_order_by
+  var_pop: convenios_var_pop_order_by
+  var_samp: convenios_var_samp_order_by
+  variance: convenios_variance_order_by
+}
+
+# input type for inserting array relation for remote table "convenios"
+input convenios_arr_rel_insert_input {
+  data: [convenios_insert_input!]!
+  on_conflict: convenios_on_conflict
+}
+
+# aggregate avg on columns
+type convenios_avg_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by avg() on columns of table "convenios"
+input convenios_avg_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "convenios". All fields are combined with a logical 'AND'.
+input convenios_bool_exp {
+  _and: [convenios_bool_exp]
+  _not: convenios_bool_exp
+  _or: [convenios_bool_exp]
+  ativo: Int_comparison_exp
+  codigo: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  link: String_comparison_exp
+  nome: String_comparison_exp
+  status: bpchar_comparison_exp
+  tipo: String_comparison_exp
+  tipo_robo: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# unique or primary key constraints on table "convenios"
+enum convenios_constraint {
+  # unique or primary key constraint
+  tipos_convenios_pkey
+}
+
+# input type for incrementing integer columne in table "convenios"
+input convenios_inc_input {
+  ativo: Int
+  id: Int
+}
+
+# input type for inserting data into table "convenios"
+input convenios_insert_input {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int
+  link: String
+  nome: String
+  status: bpchar
+  tipo: String
+  tipo_robo: String
+  updated_at: timestamptz
+}
+
+# aggregate max on columns
+type convenios_max_fields {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int
+  link: String
+  nome: String
+  tipo: String
+  tipo_robo: String
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "convenios"
+input convenios_max_order_by {
+  ativo: order_by
+  codigo: order_by
+  created_at: order_by
+  deleted_at: order_by
+  id: order_by
+  link: order_by
+  nome: order_by
+  tipo: order_by
+  tipo_robo: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type convenios_min_fields {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int
+  link: String
+  nome: String
+  tipo: String
+  tipo_robo: String
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "convenios"
+input convenios_min_order_by {
+  ativo: order_by
+  codigo: order_by
+  created_at: order_by
+  deleted_at: order_by
+  id: order_by
+  link: order_by
+  nome: order_by
+  tipo: order_by
+  tipo_robo: order_by
+  updated_at: order_by
+}
+
+# response of any mutation on the table "convenios"
+type convenios_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [convenios!]!
+}
+
+# input type for inserting object relation for remote table "convenios"
+input convenios_obj_rel_insert_input {
+  data: convenios_insert_input!
+  on_conflict: convenios_on_conflict
+}
+
+# on conflict condition type for table "convenios"
+input convenios_on_conflict {
+  constraint: convenios_constraint!
+  update_columns: [convenios_update_column!]!
+  where: convenios_bool_exp
+}
+
+# ordering options when selecting data from "convenios"
+input convenios_order_by {
+  ativo: order_by
+  codigo: order_by
+  created_at: order_by
+  deleted_at: order_by
+  id: order_by
+  link: order_by
+  nome: order_by
+  status: order_by
+  tipo: order_by
+  tipo_robo: order_by
+  updated_at: order_by
+}
+
+# select columns of table "convenios"
+enum convenios_select_column {
+  # column name
+  ativo
+
+  # column name
+  codigo
+
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  id
+
+  # column name
+  link
+
+  # column name
+  nome
+
+  # column name
+  status
+
+  # column name
+  tipo
+
+  # column name
+  tipo_robo
+
+  # column name
+  updated_at
+}
+
+# input type for updating data in table "convenios"
+input convenios_set_input {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  id: Int
+  link: String
+  nome: String
+  status: bpchar
+  tipo: String
+  tipo_robo: String
+  updated_at: timestamptz
+}
+
+# aggregate stddev on columns
+type convenios_stddev_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by stddev() on columns of table "convenios"
+input convenios_stddev_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type convenios_stddev_pop_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "convenios"
+input convenios_stddev_pop_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type convenios_stddev_samp_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "convenios"
+input convenios_stddev_samp_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# aggregate sum on columns
+type convenios_sum_fields {
+  ativo: Int
+  id: Int
+}
+
+# order by sum() on columns of table "convenios"
+input convenios_sum_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# update columns of table "convenios"
+enum convenios_update_column {
+  # column name
+  ativo
+
+  # column name
+  codigo
+
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  id
+
+  # column name
+  link
+
+  # column name
+  nome
+
+  # column name
+  status
+
+  # column name
+  tipo
+
+  # column name
+  tipo_robo
+
+  # column name
+  updated_at
+}
+
+# aggregate var_pop on columns
+type convenios_var_pop_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by var_pop() on columns of table "convenios"
+input convenios_var_pop_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type convenios_var_samp_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by var_samp() on columns of table "convenios"
+input convenios_var_samp_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# aggregate variance on columns
+type convenios_variance_fields {
+  ativo: Float
+  id: Float
+}
+
+# order by variance() on columns of table "convenios"
+input convenios_variance_order_by {
+  ativo: order_by
+  id: order_by
+}
+
+# columns and relationships of "importacao_convenios"
+type importacao_convenios {
+  codigo_motivo: String
+  codigo_produto: String
+  convenio: String
+  created_at: timestamptz
+  data_pagamento: String
+  deleted_at: timestamptz
+  descricao_motivo: String
+  descricao_produto: String
+  id: bigint!
+  id_convenio: Int
+  lote_importacao: String
+  matricula: String
+  ng_prest: String
+  nome: String
+  numero_guia: String
+  numero_protocolo: String
+  senha_guia: String
+  source: String
+  updated_at: timestamptz
+  valor_apresentado: String
+  valor_glosa: String
+  valor_pago: String
+}
+
+# aggregated selection of "importacao_convenios"
+type importacao_convenios_aggregate {
+  aggregate: importacao_convenios_aggregate_fields
+  nodes: [importacao_convenios!]!
+}
+
+# aggregate fields of "importacao_convenios"
+type importacao_convenios_aggregate_fields {
+  avg: importacao_convenios_avg_fields
+  count(columns: [importacao_convenios_select_column!], distinct: Boolean): Int
+  max: importacao_convenios_max_fields
+  min: importacao_convenios_min_fields
+  stddev: importacao_convenios_stddev_fields
+  stddev_pop: importacao_convenios_stddev_pop_fields
+  stddev_samp: importacao_convenios_stddev_samp_fields
+  sum: importacao_convenios_sum_fields
+  var_pop: importacao_convenios_var_pop_fields
+  var_samp: importacao_convenios_var_samp_fields
+  variance: importacao_convenios_variance_fields
+}
+
+# order by aggregate values of table "importacao_convenios"
+input importacao_convenios_aggregate_order_by {
+  avg: importacao_convenios_avg_order_by
+  count: order_by
+  max: importacao_convenios_max_order_by
+  min: importacao_convenios_min_order_by
+  stddev: importacao_convenios_stddev_order_by
+  stddev_pop: importacao_convenios_stddev_pop_order_by
+  stddev_samp: importacao_convenios_stddev_samp_order_by
+  sum: importacao_convenios_sum_order_by
+  var_pop: importacao_convenios_var_pop_order_by
+  var_samp: importacao_convenios_var_samp_order_by
+  variance: importacao_convenios_variance_order_by
+}
+
+# input type for inserting array relation for remote table "importacao_convenios"
+input importacao_convenios_arr_rel_insert_input {
+  data: [importacao_convenios_insert_input!]!
+  on_conflict: importacao_convenios_on_conflict
+}
+
+# aggregate avg on columns
+type importacao_convenios_avg_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by avg() on columns of table "importacao_convenios"
+input importacao_convenios_avg_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# Boolean expression to filter rows from the table "importacao_convenios". All fields are combined with a logical 'AND'.
+input importacao_convenios_bool_exp {
+  _and: [importacao_convenios_bool_exp]
+  _not: importacao_convenios_bool_exp
+  _or: [importacao_convenios_bool_exp]
+  codigo_motivo: String_comparison_exp
+  codigo_produto: String_comparison_exp
+  convenio: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  data_pagamento: String_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  descricao_motivo: String_comparison_exp
+  descricao_produto: String_comparison_exp
+  id: bigint_comparison_exp
+  id_convenio: Int_comparison_exp
+  lote_importacao: String_comparison_exp
+  matricula: String_comparison_exp
+  ng_prest: String_comparison_exp
+  nome: String_comparison_exp
+  numero_guia: String_comparison_exp
+  numero_protocolo: String_comparison_exp
+  senha_guia: String_comparison_exp
+  source: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  valor_apresentado: String_comparison_exp
+  valor_glosa: String_comparison_exp
+  valor_pago: String_comparison_exp
+}
+
+# unique or primary key constraints on table "importacao_convenios"
+enum importacao_convenios_constraint {
+  # unique or primary key constraint
+  importacao_convenios_pkey
+}
+
+# input type for incrementing integer columne in table "importacao_convenios"
+input importacao_convenios_inc_input {
+  id: bigint
+  id_convenio: Int
+}
+
+# input type for inserting data into table "importacao_convenios"
+input importacao_convenios_insert_input {
+  codigo_motivo: String
+  codigo_produto: String
+  convenio: String
+  created_at: timestamptz
+  data_pagamento: String
+  deleted_at: timestamptz
+  descricao_motivo: String
+  descricao_produto: String
+  id: bigint
+  id_convenio: Int
+  lote_importacao: String
+  matricula: String
+  ng_prest: String
+  nome: String
+  numero_guia: String
+  numero_protocolo: String
+  senha_guia: String
+  source: String
+  updated_at: timestamptz
+  valor_apresentado: String
+  valor_glosa: String
+  valor_pago: String
+}
+
+# aggregate max on columns
+type importacao_convenios_max_fields {
+  codigo_motivo: String
+  codigo_produto: String
+  convenio: String
+  created_at: timestamptz
+  data_pagamento: String
+  deleted_at: timestamptz
+  descricao_motivo: String
+  descricao_produto: String
+  id: bigint
+  id_convenio: Int
+  lote_importacao: String
+  matricula: String
+  ng_prest: String
+  nome: String
+  numero_guia: String
+  numero_protocolo: String
+  senha_guia: String
+  source: String
+  updated_at: timestamptz
+  valor_apresentado: String
+  valor_glosa: String
+  valor_pago: String
+}
+
+# order by max() on columns of table "importacao_convenios"
+input importacao_convenios_max_order_by {
+  codigo_motivo: order_by
+  codigo_produto: order_by
+  convenio: order_by
+  created_at: order_by
+  data_pagamento: order_by
+  deleted_at: order_by
+  descricao_motivo: order_by
+  descricao_produto: order_by
+  id: order_by
+  id_convenio: order_by
+  lote_importacao: order_by
+  matricula: order_by
+  ng_prest: order_by
+  nome: order_by
+  numero_guia: order_by
+  numero_protocolo: order_by
+  senha_guia: order_by
+  source: order_by
+  updated_at: order_by
+  valor_apresentado: order_by
+  valor_glosa: order_by
+  valor_pago: order_by
+}
+
+# aggregate min on columns
+type importacao_convenios_min_fields {
+  codigo_motivo: String
+  codigo_produto: String
+  convenio: String
+  created_at: timestamptz
+  data_pagamento: String
+  deleted_at: timestamptz
+  descricao_motivo: String
+  descricao_produto: String
+  id: bigint
+  id_convenio: Int
+  lote_importacao: String
+  matricula: String
+  ng_prest: String
+  nome: String
+  numero_guia: String
+  numero_protocolo: String
+  senha_guia: String
+  source: String
+  updated_at: timestamptz
+  valor_apresentado: String
+  valor_glosa: String
+  valor_pago: String
+}
+
+# order by min() on columns of table "importacao_convenios"
+input importacao_convenios_min_order_by {
+  codigo_motivo: order_by
+  codigo_produto: order_by
+  convenio: order_by
+  created_at: order_by
+  data_pagamento: order_by
+  deleted_at: order_by
+  descricao_motivo: order_by
+  descricao_produto: order_by
+  id: order_by
+  id_convenio: order_by
+  lote_importacao: order_by
+  matricula: order_by
+  ng_prest: order_by
+  nome: order_by
+  numero_guia: order_by
+  numero_protocolo: order_by
+  senha_guia: order_by
+  source: order_by
+  updated_at: order_by
+  valor_apresentado: order_by
+  valor_glosa: order_by
+  valor_pago: order_by
+}
+
+# response of any mutation on the table "importacao_convenios"
+type importacao_convenios_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [importacao_convenios!]!
+}
+
+# input type for inserting object relation for remote table "importacao_convenios"
+input importacao_convenios_obj_rel_insert_input {
+  data: importacao_convenios_insert_input!
+  on_conflict: importacao_convenios_on_conflict
+}
+
+# on conflict condition type for table "importacao_convenios"
+input importacao_convenios_on_conflict {
+  constraint: importacao_convenios_constraint!
+  update_columns: [importacao_convenios_update_column!]!
+  where: importacao_convenios_bool_exp
+}
+
+# ordering options when selecting data from "importacao_convenios"
+input importacao_convenios_order_by {
+  codigo_motivo: order_by
+  codigo_produto: order_by
+  convenio: order_by
+  created_at: order_by
+  data_pagamento: order_by
+  deleted_at: order_by
+  descricao_motivo: order_by
+  descricao_produto: order_by
+  id: order_by
+  id_convenio: order_by
+  lote_importacao: order_by
+  matricula: order_by
+  ng_prest: order_by
+  nome: order_by
+  numero_guia: order_by
+  numero_protocolo: order_by
+  senha_guia: order_by
+  source: order_by
+  updated_at: order_by
+  valor_apresentado: order_by
+  valor_glosa: order_by
+  valor_pago: order_by
+}
+
+# select columns of table "importacao_convenios"
+enum importacao_convenios_select_column {
+  # column name
+  codigo_motivo
+
+  # column name
+  codigo_produto
+
+  # column name
+  convenio
+
+  # column name
+  created_at
+
+  # column name
+  data_pagamento
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao_motivo
+
+  # column name
+  descricao_produto
+
+  # column name
+  id
+
+  # column name
+  id_convenio
+
+  # column name
+  lote_importacao
+
+  # column name
+  matricula
+
+  # column name
+  ng_prest
+
+  # column name
+  nome
+
+  # column name
+  numero_guia
+
+  # column name
+  numero_protocolo
+
+  # column name
+  senha_guia
+
+  # column name
+  source
+
+  # column name
+  updated_at
+
+  # column name
+  valor_apresentado
+
+  # column name
+  valor_glosa
+
+  # column name
+  valor_pago
+}
+
+# input type for updating data in table "importacao_convenios"
+input importacao_convenios_set_input {
+  codigo_motivo: String
+  codigo_produto: String
+  convenio: String
+  created_at: timestamptz
+  data_pagamento: String
+  deleted_at: timestamptz
+  descricao_motivo: String
+  descricao_produto: String
+  id: bigint
+  id_convenio: Int
+  lote_importacao: String
+  matricula: String
+  ng_prest: String
+  nome: String
+  numero_guia: String
+  numero_protocolo: String
+  senha_guia: String
+  source: String
+  updated_at: timestamptz
+  valor_apresentado: String
+  valor_glosa: String
+  valor_pago: String
+}
+
+# aggregate stddev on columns
+type importacao_convenios_stddev_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by stddev() on columns of table "importacao_convenios"
+input importacao_convenios_stddev_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# aggregate stddev_pop on columns
+type importacao_convenios_stddev_pop_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by stddev_pop() on columns of table "importacao_convenios"
+input importacao_convenios_stddev_pop_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# aggregate stddev_samp on columns
+type importacao_convenios_stddev_samp_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by stddev_samp() on columns of table "importacao_convenios"
+input importacao_convenios_stddev_samp_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# aggregate sum on columns
+type importacao_convenios_sum_fields {
+  id: bigint
+  id_convenio: Int
+}
+
+# order by sum() on columns of table "importacao_convenios"
+input importacao_convenios_sum_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# update columns of table "importacao_convenios"
+enum importacao_convenios_update_column {
+  # column name
+  codigo_motivo
+
+  # column name
+  codigo_produto
+
+  # column name
+  convenio
+
+  # column name
+  created_at
+
+  # column name
+  data_pagamento
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao_motivo
+
+  # column name
+  descricao_produto
+
+  # column name
+  id
+
+  # column name
+  id_convenio
+
+  # column name
+  lote_importacao
+
+  # column name
+  matricula
+
+  # column name
+  ng_prest
+
+  # column name
+  nome
+
+  # column name
+  numero_guia
+
+  # column name
+  numero_protocolo
+
+  # column name
+  senha_guia
+
+  # column name
+  source
+
+  # column name
+  updated_at
+
+  # column name
+  valor_apresentado
+
+  # column name
+  valor_glosa
+
+  # column name
+  valor_pago
+}
+
+# aggregate var_pop on columns
+type importacao_convenios_var_pop_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by var_pop() on columns of table "importacao_convenios"
+input importacao_convenios_var_pop_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# aggregate var_samp on columns
+type importacao_convenios_var_samp_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by var_samp() on columns of table "importacao_convenios"
+input importacao_convenios_var_samp_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# aggregate variance on columns
+type importacao_convenios_variance_fields {
+  id: Float
+  id_convenio: Float
+}
+
+# order by variance() on columns of table "importacao_convenios"
+input importacao_convenios_variance_order_by {
+  id: order_by
+  id_convenio: order_by
+}
+
+# columns and relationships of "importacao_guias"
+type importacao_guias {
+  ans: String
+  cnpj: String
+  codigo: String
+  created_at: timestamptz
+  dataAtendimento: String
+  deleted_at: timestamptz
+  id: bigint!
+  id_convenios: Int
+  id_prestadores_servico: Int
+  matricula: String
+  nome: String
+  nomeBeneficiario: String
+  nomeOperadora: String
+  nomePrestador: String
+  numeroGuia: String
+  numeroItem: String
+  quantidade: String
+  sistema: String
+  source: String
+  updated_at: timestamptz
+  valorTotal: String
+  valorTotalGuia: String
+  valorUnitario: String
+}
+
+# aggregated selection of "importacao_guias"
+type importacao_guias_aggregate {
+  aggregate: importacao_guias_aggregate_fields
+  nodes: [importacao_guias!]!
+}
+
+# aggregate fields of "importacao_guias"
+type importacao_guias_aggregate_fields {
+  avg: importacao_guias_avg_fields
+  count(columns: [importacao_guias_select_column!], distinct: Boolean): Int
+  max: importacao_guias_max_fields
+  min: importacao_guias_min_fields
+  stddev: importacao_guias_stddev_fields
+  stddev_pop: importacao_guias_stddev_pop_fields
+  stddev_samp: importacao_guias_stddev_samp_fields
+  sum: importacao_guias_sum_fields
+  var_pop: importacao_guias_var_pop_fields
+  var_samp: importacao_guias_var_samp_fields
+  variance: importacao_guias_variance_fields
+}
+
+# order by aggregate values of table "importacao_guias"
+input importacao_guias_aggregate_order_by {
+  avg: importacao_guias_avg_order_by
+  count: order_by
+  max: importacao_guias_max_order_by
+  min: importacao_guias_min_order_by
+  stddev: importacao_guias_stddev_order_by
+  stddev_pop: importacao_guias_stddev_pop_order_by
+  stddev_samp: importacao_guias_stddev_samp_order_by
+  sum: importacao_guias_sum_order_by
+  var_pop: importacao_guias_var_pop_order_by
+  var_samp: importacao_guias_var_samp_order_by
+  variance: importacao_guias_variance_order_by
+}
+
+# input type for inserting array relation for remote table "importacao_guias"
+input importacao_guias_arr_rel_insert_input {
+  data: [importacao_guias_insert_input!]!
+  on_conflict: importacao_guias_on_conflict
+}
+
+# aggregate avg on columns
+type importacao_guias_avg_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by avg() on columns of table "importacao_guias"
+input importacao_guias_avg_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# Boolean expression to filter rows from the table "importacao_guias". All fields are combined with a logical 'AND'.
+input importacao_guias_bool_exp {
+  _and: [importacao_guias_bool_exp]
+  _not: importacao_guias_bool_exp
+  _or: [importacao_guias_bool_exp]
+  ans: String_comparison_exp
+  cnpj: String_comparison_exp
+  codigo: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  dataAtendimento: String_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  id: bigint_comparison_exp
+  id_convenios: Int_comparison_exp
+  id_prestadores_servico: Int_comparison_exp
+  matricula: String_comparison_exp
+  nome: String_comparison_exp
+  nomeBeneficiario: String_comparison_exp
+  nomeOperadora: String_comparison_exp
+  nomePrestador: String_comparison_exp
+  numeroGuia: String_comparison_exp
+  numeroItem: String_comparison_exp
+  quantidade: String_comparison_exp
+  sistema: String_comparison_exp
+  source: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  valorTotal: String_comparison_exp
+  valorTotalGuia: String_comparison_exp
+  valorUnitario: String_comparison_exp
+}
+
+# unique or primary key constraints on table "importacao_guias"
+enum importacao_guias_constraint {
+  # unique or primary key constraint
+  guias_pkey
+
+  # unique or primary key constraint
+  importacao_guias_id_key
+}
+
+# input type for incrementing integer columne in table "importacao_guias"
+input importacao_guias_inc_input {
+  id: bigint
+  id_convenios: Int
+  id_prestadores_servico: Int
+}
+
+# input type for inserting data into table "importacao_guias"
+input importacao_guias_insert_input {
+  ans: String
+  cnpj: String
+  codigo: String
+  created_at: timestamptz
+  dataAtendimento: String
+  deleted_at: timestamptz
+  id: bigint
+  id_convenios: Int
+  id_prestadores_servico: Int
+  matricula: String
+  nome: String
+  nomeBeneficiario: String
+  nomeOperadora: String
+  nomePrestador: String
+  numeroGuia: String
+  numeroItem: String
+  quantidade: String
+  sistema: String
+  source: String
+  updated_at: timestamptz
+  valorTotal: String
+  valorTotalGuia: String
+  valorUnitario: String
+}
+
+# aggregate max on columns
+type importacao_guias_max_fields {
+  ans: String
+  cnpj: String
+  codigo: String
+  created_at: timestamptz
+  dataAtendimento: String
+  deleted_at: timestamptz
+  id: bigint
+  id_convenios: Int
+  id_prestadores_servico: Int
+  matricula: String
+  nome: String
+  nomeBeneficiario: String
+  nomeOperadora: String
+  nomePrestador: String
+  numeroGuia: String
+  numeroItem: String
+  quantidade: String
+  sistema: String
+  source: String
+  updated_at: timestamptz
+  valorTotal: String
+  valorTotalGuia: String
+  valorUnitario: String
+}
+
+# order by max() on columns of table "importacao_guias"
+input importacao_guias_max_order_by {
+  ans: order_by
+  cnpj: order_by
+  codigo: order_by
+  created_at: order_by
+  dataAtendimento: order_by
+  deleted_at: order_by
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+  matricula: order_by
+  nome: order_by
+  nomeBeneficiario: order_by
+  nomeOperadora: order_by
+  nomePrestador: order_by
+  numeroGuia: order_by
+  numeroItem: order_by
+  quantidade: order_by
+  sistema: order_by
+  source: order_by
+  updated_at: order_by
+  valorTotal: order_by
+  valorTotalGuia: order_by
+  valorUnitario: order_by
+}
+
+# aggregate min on columns
+type importacao_guias_min_fields {
+  ans: String
+  cnpj: String
+  codigo: String
+  created_at: timestamptz
+  dataAtendimento: String
+  deleted_at: timestamptz
+  id: bigint
+  id_convenios: Int
+  id_prestadores_servico: Int
+  matricula: String
+  nome: String
+  nomeBeneficiario: String
+  nomeOperadora: String
+  nomePrestador: String
+  numeroGuia: String
+  numeroItem: String
+  quantidade: String
+  sistema: String
+  source: String
+  updated_at: timestamptz
+  valorTotal: String
+  valorTotalGuia: String
+  valorUnitario: String
+}
+
+# order by min() on columns of table "importacao_guias"
+input importacao_guias_min_order_by {
+  ans: order_by
+  cnpj: order_by
+  codigo: order_by
+  created_at: order_by
+  dataAtendimento: order_by
+  deleted_at: order_by
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+  matricula: order_by
+  nome: order_by
+  nomeBeneficiario: order_by
+  nomeOperadora: order_by
+  nomePrestador: order_by
+  numeroGuia: order_by
+  numeroItem: order_by
+  quantidade: order_by
+  sistema: order_by
+  source: order_by
+  updated_at: order_by
+  valorTotal: order_by
+  valorTotalGuia: order_by
+  valorUnitario: order_by
+}
+
+# response of any mutation on the table "importacao_guias"
+type importacao_guias_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [importacao_guias!]!
+}
+
+# input type for inserting object relation for remote table "importacao_guias"
+input importacao_guias_obj_rel_insert_input {
+  data: importacao_guias_insert_input!
+  on_conflict: importacao_guias_on_conflict
+}
+
+# on conflict condition type for table "importacao_guias"
+input importacao_guias_on_conflict {
+  constraint: importacao_guias_constraint!
+  update_columns: [importacao_guias_update_column!]!
+  where: importacao_guias_bool_exp
+}
+
+# ordering options when selecting data from "importacao_guias"
+input importacao_guias_order_by {
+  ans: order_by
+  cnpj: order_by
+  codigo: order_by
+  created_at: order_by
+  dataAtendimento: order_by
+  deleted_at: order_by
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+  matricula: order_by
+  nome: order_by
+  nomeBeneficiario: order_by
+  nomeOperadora: order_by
+  nomePrestador: order_by
+  numeroGuia: order_by
+  numeroItem: order_by
+  quantidade: order_by
+  sistema: order_by
+  source: order_by
+  updated_at: order_by
+  valorTotal: order_by
+  valorTotalGuia: order_by
+  valorUnitario: order_by
+}
+
+# select columns of table "importacao_guias"
+enum importacao_guias_select_column {
+  # column name
+  ans
+
+  # column name
+  cnpj
+
+  # column name
+  codigo
+
+  # column name
+  created_at
+
+  # column name
+  dataAtendimento
+
+  # column name
+  deleted_at
+
+  # column name
+  id
+
+  # column name
+  id_convenios
+
+  # column name
+  id_prestadores_servico
+
+  # column name
+  matricula
+
+  # column name
+  nome
+
+  # column name
+  nomeBeneficiario
+
+  # column name
+  nomeOperadora
+
+  # column name
+  nomePrestador
+
+  # column name
+  numeroGuia
+
+  # column name
+  numeroItem
+
+  # column name
+  quantidade
+
+  # column name
+  sistema
+
+  # column name
+  source
+
+  # column name
+  updated_at
+
+  # column name
+  valorTotal
+
+  # column name
+  valorTotalGuia
+
+  # column name
+  valorUnitario
+}
+
+# input type for updating data in table "importacao_guias"
+input importacao_guias_set_input {
+  ans: String
+  cnpj: String
+  codigo: String
+  created_at: timestamptz
+  dataAtendimento: String
+  deleted_at: timestamptz
+  id: bigint
+  id_convenios: Int
+  id_prestadores_servico: Int
+  matricula: String
+  nome: String
+  nomeBeneficiario: String
+  nomeOperadora: String
+  nomePrestador: String
+  numeroGuia: String
+  numeroItem: String
+  quantidade: String
+  sistema: String
+  source: String
+  updated_at: timestamptz
+  valorTotal: String
+  valorTotalGuia: String
+  valorUnitario: String
+}
+
+# aggregate stddev on columns
+type importacao_guias_stddev_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by stddev() on columns of table "importacao_guias"
+input importacao_guias_stddev_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# aggregate stddev_pop on columns
+type importacao_guias_stddev_pop_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by stddev_pop() on columns of table "importacao_guias"
+input importacao_guias_stddev_pop_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# aggregate stddev_samp on columns
+type importacao_guias_stddev_samp_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by stddev_samp() on columns of table "importacao_guias"
+input importacao_guias_stddev_samp_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# aggregate sum on columns
+type importacao_guias_sum_fields {
+  id: bigint
+  id_convenios: Int
+  id_prestadores_servico: Int
+}
+
+# order by sum() on columns of table "importacao_guias"
+input importacao_guias_sum_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# update columns of table "importacao_guias"
+enum importacao_guias_update_column {
+  # column name
+  ans
+
+  # column name
+  cnpj
+
+  # column name
+  codigo
+
+  # column name
+  created_at
+
+  # column name
+  dataAtendimento
+
+  # column name
+  deleted_at
+
+  # column name
+  id
+
+  # column name
+  id_convenios
+
+  # column name
+  id_prestadores_servico
+
+  # column name
+  matricula
+
+  # column name
+  nome
+
+  # column name
+  nomeBeneficiario
+
+  # column name
+  nomeOperadora
+
+  # column name
+  nomePrestador
+
+  # column name
+  numeroGuia
+
+  # column name
+  numeroItem
+
+  # column name
+  quantidade
+
+  # column name
+  sistema
+
+  # column name
+  source
+
+  # column name
+  updated_at
+
+  # column name
+  valorTotal
+
+  # column name
+  valorTotalGuia
+
+  # column name
+  valorUnitario
+}
+
+# aggregate var_pop on columns
+type importacao_guias_var_pop_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by var_pop() on columns of table "importacao_guias"
+input importacao_guias_var_pop_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# aggregate var_samp on columns
+type importacao_guias_var_samp_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by var_samp() on columns of table "importacao_guias"
+input importacao_guias_var_samp_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# aggregate variance on columns
+type importacao_guias_variance_fields {
+  id: Float
+  id_convenios: Float
+  id_prestadores_servico: Float
+}
+
+# order by variance() on columns of table "importacao_guias"
+input importacao_guias_variance_order_by {
+  id: order_by
+  id_convenios: order_by
+  id_prestadores_servico: order_by
+}
+
+# expression to compare columns of type Int. All fields are combined with logical 'AND'.
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+scalar jsonb
+
+# expression to compare columns of type jsonb. All fields are combined with logical 'AND'.
+input jsonb_comparison_exp {
+  # is the column contained in the given json value
+  _contained_in: jsonb
+
+  # does the column contain the given json value at the top level
+  _contains: jsonb
+  _eq: jsonb
+  _gt: jsonb
+  _gte: jsonb
+
+  # does the string exist as a top-level key in the column
+  _has_key: String
+
+  # do all of these strings exist as top-level keys in the column
+  _has_keys_all: [String!]
+
+  # do any of these strings exist as top-level keys in the column
+  _has_keys_any: [String!]
+  _in: [jsonb!]
+  _is_null: Boolean
+  _lt: jsonb
+  _lte: jsonb
+  _neq: jsonb
+  _nin: [jsonb!]
+}
+
+# mutation root
+type mutation_root {
+  # delete data from the table: "consolidacao"
+  delete_consolidacao(
+    # filter the rows which have to be deleted
+    where: consolidacao_bool_exp!
+  ): consolidacao_mutation_response
+
+  # delete data from the table: "convenios"
+  delete_convenios(
+    # filter the rows which have to be deleted
+    where: convenios_bool_exp!
+  ): convenios_mutation_response
+
+  # delete data from the table: "importacao_convenios"
+  delete_importacao_convenios(
+    # filter the rows which have to be deleted
+    where: importacao_convenios_bool_exp!
+  ): importacao_convenios_mutation_response
+
+  # delete data from the table: "importacao_guias"
+  delete_importacao_guias(
+    # filter the rows which have to be deleted
+    where: importacao_guias_bool_exp!
+  ): importacao_guias_mutation_response
+
+  # delete data from the table: "prestadores_servicos"
+  delete_prestadores_servicos(
+    # filter the rows which have to be deleted
+    where: prestadores_servicos_bool_exp!
+  ): prestadores_servicos_mutation_response
+
+  # delete data from the table: "status_consolidacao"
+  delete_status_consolidacao(
+    # filter the rows which have to be deleted
+    where: status_consolidacao_bool_exp!
+  ): status_consolidacao_mutation_response
+
+  # delete data from the table: "tipo_erro"
+  delete_tipo_erro(
+    # filter the rows which have to be deleted
+    where: tipo_erro_bool_exp!
+  ): tipo_erro_mutation_response
+
+  # delete data from the table: "tipo_prestador"
+  delete_tipo_prestador(
+    # filter the rows which have to be deleted
+    where: tipo_prestador_bool_exp!
+  ): tipo_prestador_mutation_response
+
+  # insert data into the table: "consolidacao"
+  insert_consolidacao(
+    # the rows to be inserted
+    objects: [consolidacao_insert_input!]!
+
+    # on conflict condition
+    on_conflict: consolidacao_on_conflict
+  ): consolidacao_mutation_response
+
+  # insert data into the table: "convenios"
+  insert_convenios(
+    # the rows to be inserted
+    objects: [convenios_insert_input!]!
+
+    # on conflict condition
+    on_conflict: convenios_on_conflict
+  ): convenios_mutation_response
+
+  # insert data into the table: "importacao_convenios"
+  insert_importacao_convenios(
+    # the rows to be inserted
+    objects: [importacao_convenios_insert_input!]!
+
+    # on conflict condition
+    on_conflict: importacao_convenios_on_conflict
+  ): importacao_convenios_mutation_response
+
+  # insert data into the table: "importacao_guias"
+  insert_importacao_guias(
+    # the rows to be inserted
+    objects: [importacao_guias_insert_input!]!
+
+    # on conflict condition
+    on_conflict: importacao_guias_on_conflict
+  ): importacao_guias_mutation_response
+
+  # insert data into the table: "prestadores_servicos"
+  insert_prestadores_servicos(
+    # the rows to be inserted
+    objects: [prestadores_servicos_insert_input!]!
+
+    # on conflict condition
+    on_conflict: prestadores_servicos_on_conflict
+  ): prestadores_servicos_mutation_response
+
+  # insert data into the table: "status_consolidacao"
+  insert_status_consolidacao(
+    # the rows to be inserted
+    objects: [status_consolidacao_insert_input!]!
+
+    # on conflict condition
+    on_conflict: status_consolidacao_on_conflict
+  ): status_consolidacao_mutation_response
+
+  # insert data into the table: "tipo_erro"
+  insert_tipo_erro(
+    # the rows to be inserted
+    objects: [tipo_erro_insert_input!]!
+
+    # on conflict condition
+    on_conflict: tipo_erro_on_conflict
+  ): tipo_erro_mutation_response
+
+  # insert data into the table: "tipo_prestador"
+  insert_tipo_prestador(
+    # the rows to be inserted
+    objects: [tipo_prestador_insert_input!]!
+
+    # on conflict condition
+    on_conflict: tipo_prestador_on_conflict
+  ): tipo_prestador_mutation_response
+
+  # update data of the table: "consolidacao"
+  update_consolidacao(
+    # append existing jsonb value of filtered columns with new jsonb value
+    _append: consolidacao_append_input
+
+    # delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    _delete_at_path: consolidacao_delete_at_path_input
+
+    # delete the array element with specified index (negative integers count from
+    # the end). throws an error if top level container is not an array
+    _delete_elem: consolidacao_delete_elem_input
+
+    # delete key/value pair or string element. key/value pairs are matched based on their key value
+    _delete_key: consolidacao_delete_key_input
+
+    # increments the integer columns with given value of the filtered values
+    _inc: consolidacao_inc_input
+
+    # prepend existing jsonb value of filtered columns with new jsonb value
+    _prepend: consolidacao_prepend_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: consolidacao_set_input
+
+    # filter the rows which have to be updated
+    where: consolidacao_bool_exp!
+  ): consolidacao_mutation_response
+
+  # update data of the table: "convenios"
+  update_convenios(
+    # increments the integer columns with given value of the filtered values
+    _inc: convenios_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: convenios_set_input
+
+    # filter the rows which have to be updated
+    where: convenios_bool_exp!
+  ): convenios_mutation_response
+
+  # update data of the table: "importacao_convenios"
+  update_importacao_convenios(
+    # increments the integer columns with given value of the filtered values
+    _inc: importacao_convenios_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: importacao_convenios_set_input
+
+    # filter the rows which have to be updated
+    where: importacao_convenios_bool_exp!
+  ): importacao_convenios_mutation_response
+
+  # update data of the table: "importacao_guias"
+  update_importacao_guias(
+    # increments the integer columns with given value of the filtered values
+    _inc: importacao_guias_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: importacao_guias_set_input
+
+    # filter the rows which have to be updated
+    where: importacao_guias_bool_exp!
+  ): importacao_guias_mutation_response
+
+  # update data of the table: "prestadores_servicos"
+  update_prestadores_servicos(
+    # increments the integer columns with given value of the filtered values
+    _inc: prestadores_servicos_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: prestadores_servicos_set_input
+
+    # filter the rows which have to be updated
+    where: prestadores_servicos_bool_exp!
+  ): prestadores_servicos_mutation_response
+
+  # update data of the table: "status_consolidacao"
+  update_status_consolidacao(
+    # increments the integer columns with given value of the filtered values
+    _inc: status_consolidacao_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: status_consolidacao_set_input
+
+    # filter the rows which have to be updated
+    where: status_consolidacao_bool_exp!
+  ): status_consolidacao_mutation_response
+
+  # update data of the table: "tipo_erro"
+  update_tipo_erro(
+    # increments the integer columns with given value of the filtered values
+    _inc: tipo_erro_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: tipo_erro_set_input
+
+    # filter the rows which have to be updated
+    where: tipo_erro_bool_exp!
+  ): tipo_erro_mutation_response
+
+  # update data of the table: "tipo_prestador"
+  update_tipo_prestador(
+    # increments the integer columns with given value of the filtered values
+    _inc: tipo_prestador_inc_input
+
+    # sets the columns of the filtered rows to the given values
+    _set: tipo_prestador_set_input
+
+    # filter the rows which have to be updated
+    where: tipo_prestador_bool_exp!
+  ): tipo_prestador_mutation_response
+}
+
+# column ordering options
+enum order_by {
+  # in the ascending order, nulls last
+  asc
+
+  # in the ascending order, nulls first
+  asc_nulls_first
+
+  # in the ascending order, nulls last
+  asc_nulls_last
+
+  # in the descending order, nulls first
+  desc
+
+  # in the descending order, nulls first
+  desc_nulls_first
+
+  # in the descending order, nulls last
+  desc_nulls_last
+}
+
+# columns and relationships of "prestadores_servicos"
+type prestadores_servicos {
+  ativo: Int
+  codigo: String!
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int!
+  id_tipo_prestador: Int
+  nome: String!
+  status: bpchar
+  updated_at: timestamptz
+}
+
+# aggregated selection of "prestadores_servicos"
+type prestadores_servicos_aggregate {
+  aggregate: prestadores_servicos_aggregate_fields
+  nodes: [prestadores_servicos!]!
+}
+
+# aggregate fields of "prestadores_servicos"
+type prestadores_servicos_aggregate_fields {
+  avg: prestadores_servicos_avg_fields
+  count(columns: [prestadores_servicos_select_column!], distinct: Boolean): Int
+  max: prestadores_servicos_max_fields
+  min: prestadores_servicos_min_fields
+  stddev: prestadores_servicos_stddev_fields
+  stddev_pop: prestadores_servicos_stddev_pop_fields
+  stddev_samp: prestadores_servicos_stddev_samp_fields
+  sum: prestadores_servicos_sum_fields
+  var_pop: prestadores_servicos_var_pop_fields
+  var_samp: prestadores_servicos_var_samp_fields
+  variance: prestadores_servicos_variance_fields
+}
+
+# order by aggregate values of table "prestadores_servicos"
+input prestadores_servicos_aggregate_order_by {
+  avg: prestadores_servicos_avg_order_by
+  count: order_by
+  max: prestadores_servicos_max_order_by
+  min: prestadores_servicos_min_order_by
+  stddev: prestadores_servicos_stddev_order_by
+  stddev_pop: prestadores_servicos_stddev_pop_order_by
+  stddev_samp: prestadores_servicos_stddev_samp_order_by
+  sum: prestadores_servicos_sum_order_by
+  var_pop: prestadores_servicos_var_pop_order_by
+  var_samp: prestadores_servicos_var_samp_order_by
+  variance: prestadores_servicos_variance_order_by
+}
+
+# input type for inserting array relation for remote table "prestadores_servicos"
+input prestadores_servicos_arr_rel_insert_input {
+  data: [prestadores_servicos_insert_input!]!
+  on_conflict: prestadores_servicos_on_conflict
+}
+
+# aggregate avg on columns
+type prestadores_servicos_avg_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by avg() on columns of table "prestadores_servicos"
+input prestadores_servicos_avg_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# Boolean expression to filter rows from the table "prestadores_servicos". All fields are combined with a logical 'AND'.
+input prestadores_servicos_bool_exp {
+  _and: [prestadores_servicos_bool_exp]
+  _not: prestadores_servicos_bool_exp
+  _or: [prestadores_servicos_bool_exp]
+  ativo: Int_comparison_exp
+  codigo: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  descricao: String_comparison_exp
+  id: Int_comparison_exp
+  id_tipo_prestador: Int_comparison_exp
+  nome: String_comparison_exp
+  status: bpchar_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# unique or primary key constraints on table "prestadores_servicos"
+enum prestadores_servicos_constraint {
+  # unique or primary key constraint
+  prestadores_servico_pkey
+}
+
+# input type for incrementing integer columne in table "prestadores_servicos"
+input prestadores_servicos_inc_input {
+  ativo: Int
+  id: Int
+  id_tipo_prestador: Int
+}
+
+# input type for inserting data into table "prestadores_servicos"
+input prestadores_servicos_insert_input {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  id_tipo_prestador: Int
+  nome: String
+  status: bpchar
+  updated_at: timestamptz
+}
+
+# aggregate max on columns
+type prestadores_servicos_max_fields {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  id_tipo_prestador: Int
+  nome: String
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "prestadores_servicos"
+input prestadores_servicos_max_order_by {
+  ativo: order_by
+  codigo: order_by
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+  nome: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type prestadores_servicos_min_fields {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  id_tipo_prestador: Int
+  nome: String
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "prestadores_servicos"
+input prestadores_servicos_min_order_by {
+  ativo: order_by
+  codigo: order_by
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+  nome: order_by
+  updated_at: order_by
+}
+
+# response of any mutation on the table "prestadores_servicos"
+type prestadores_servicos_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [prestadores_servicos!]!
+}
+
+# input type for inserting object relation for remote table "prestadores_servicos"
+input prestadores_servicos_obj_rel_insert_input {
+  data: prestadores_servicos_insert_input!
+  on_conflict: prestadores_servicos_on_conflict
+}
+
+# on conflict condition type for table "prestadores_servicos"
+input prestadores_servicos_on_conflict {
+  constraint: prestadores_servicos_constraint!
+  update_columns: [prestadores_servicos_update_column!]!
+  where: prestadores_servicos_bool_exp
+}
+
+# ordering options when selecting data from "prestadores_servicos"
+input prestadores_servicos_order_by {
+  ativo: order_by
+  codigo: order_by
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+  nome: order_by
+  status: order_by
+  updated_at: order_by
+}
+
+# select columns of table "prestadores_servicos"
+enum prestadores_servicos_select_column {
+  # column name
+  ativo
+
+  # column name
+  codigo
+
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  id_tipo_prestador
+
+  # column name
+  nome
+
+  # column name
+  status
+
+  # column name
+  updated_at
+}
+
+# input type for updating data in table "prestadores_servicos"
+input prestadores_servicos_set_input {
+  ativo: Int
+  codigo: String
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  id_tipo_prestador: Int
+  nome: String
+  status: bpchar
+  updated_at: timestamptz
+}
+
+# aggregate stddev on columns
+type prestadores_servicos_stddev_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by stddev() on columns of table "prestadores_servicos"
+input prestadores_servicos_stddev_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# aggregate stddev_pop on columns
+type prestadores_servicos_stddev_pop_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by stddev_pop() on columns of table "prestadores_servicos"
+input prestadores_servicos_stddev_pop_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# aggregate stddev_samp on columns
+type prestadores_servicos_stddev_samp_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by stddev_samp() on columns of table "prestadores_servicos"
+input prestadores_servicos_stddev_samp_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# aggregate sum on columns
+type prestadores_servicos_sum_fields {
+  ativo: Int
+  id: Int
+  id_tipo_prestador: Int
+}
+
+# order by sum() on columns of table "prestadores_servicos"
+input prestadores_servicos_sum_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# update columns of table "prestadores_servicos"
+enum prestadores_servicos_update_column {
+  # column name
+  ativo
+
+  # column name
+  codigo
+
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  id_tipo_prestador
+
+  # column name
+  nome
+
+  # column name
+  status
+
+  # column name
+  updated_at
+}
+
+# aggregate var_pop on columns
+type prestadores_servicos_var_pop_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by var_pop() on columns of table "prestadores_servicos"
+input prestadores_servicos_var_pop_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# aggregate var_samp on columns
+type prestadores_servicos_var_samp_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by var_samp() on columns of table "prestadores_servicos"
+input prestadores_servicos_var_samp_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# aggregate variance on columns
+type prestadores_servicos_variance_fields {
+  ativo: Float
+  id: Float
+  id_tipo_prestador: Float
+}
+
+# order by variance() on columns of table "prestadores_servicos"
+input prestadores_servicos_variance_order_by {
+  ativo: order_by
+  id: order_by
+  id_tipo_prestador: order_by
+}
+
+# query root
+type query_root {
+  # fetch data from the table: "consolidacao"
+  consolidacao(
+    # distinct select on columns
+    distinct_on: [consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [consolidacao_order_by!]
+
+    # filter the rows returned
+    where: consolidacao_bool_exp
+  ): [consolidacao!]!
+
+  # fetch aggregated fields from the table: "consolidacao"
+  consolidacao_aggregate(
+    # distinct select on columns
+    distinct_on: [consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [consolidacao_order_by!]
+
+    # filter the rows returned
+    where: consolidacao_bool_exp
+  ): consolidacao_aggregate!
+
+  # fetch data from the table: "consolidacao" using primary key columns
+  consolidacao_by_pk(id: Int!): consolidacao
+
+  # fetch data from the table: "convenios"
+  convenios(
+    # distinct select on columns
+    distinct_on: [convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [convenios_order_by!]
+
+    # filter the rows returned
+    where: convenios_bool_exp
+  ): [convenios!]!
+
+  # fetch aggregated fields from the table: "convenios"
+  convenios_aggregate(
+    # distinct select on columns
+    distinct_on: [convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [convenios_order_by!]
+
+    # filter the rows returned
+    where: convenios_bool_exp
+  ): convenios_aggregate!
+
+  # fetch data from the table: "convenios" using primary key columns
+  convenios_by_pk(id: Int!): convenios
+
+  # fetch data from the table: "importacao_convenios"
+  importacao_convenios(
+    # distinct select on columns
+    distinct_on: [importacao_convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_convenios_order_by!]
+
+    # filter the rows returned
+    where: importacao_convenios_bool_exp
+  ): [importacao_convenios!]!
+
+  # fetch aggregated fields from the table: "importacao_convenios"
+  importacao_convenios_aggregate(
+    # distinct select on columns
+    distinct_on: [importacao_convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_convenios_order_by!]
+
+    # filter the rows returned
+    where: importacao_convenios_bool_exp
+  ): importacao_convenios_aggregate!
+
+  # fetch data from the table: "importacao_convenios" using primary key columns
+  importacao_convenios_by_pk(id: bigint!): importacao_convenios
+
+  # fetch data from the table: "importacao_guias"
+  importacao_guias(
+    # distinct select on columns
+    distinct_on: [importacao_guias_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_guias_order_by!]
+
+    # filter the rows returned
+    where: importacao_guias_bool_exp
+  ): [importacao_guias!]!
+
+  # fetch aggregated fields from the table: "importacao_guias"
+  importacao_guias_aggregate(
+    # distinct select on columns
+    distinct_on: [importacao_guias_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_guias_order_by!]
+
+    # filter the rows returned
+    where: importacao_guias_bool_exp
+  ): importacao_guias_aggregate!
+
+  # fetch data from the table: "importacao_guias" using primary key columns
+  importacao_guias_by_pk(id: bigint!): importacao_guias
+
+  # fetch data from the table: "prestadores_servicos"
+  prestadores_servicos(
+    # distinct select on columns
+    distinct_on: [prestadores_servicos_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [prestadores_servicos_order_by!]
+
+    # filter the rows returned
+    where: prestadores_servicos_bool_exp
+  ): [prestadores_servicos!]!
+
+  # fetch aggregated fields from the table: "prestadores_servicos"
+  prestadores_servicos_aggregate(
+    # distinct select on columns
+    distinct_on: [prestadores_servicos_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [prestadores_servicos_order_by!]
+
+    # filter the rows returned
+    where: prestadores_servicos_bool_exp
+  ): prestadores_servicos_aggregate!
+
+  # fetch data from the table: "prestadores_servicos" using primary key columns
+  prestadores_servicos_by_pk(id: Int!): prestadores_servicos
+
+  # fetch data from the table: "status_consolidacao"
+  status_consolidacao(
+    # distinct select on columns
+    distinct_on: [status_consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [status_consolidacao_order_by!]
+
+    # filter the rows returned
+    where: status_consolidacao_bool_exp
+  ): [status_consolidacao!]!
+
+  # fetch aggregated fields from the table: "status_consolidacao"
+  status_consolidacao_aggregate(
+    # distinct select on columns
+    distinct_on: [status_consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [status_consolidacao_order_by!]
+
+    # filter the rows returned
+    where: status_consolidacao_bool_exp
+  ): status_consolidacao_aggregate!
+
+  # fetch data from the table: "status_consolidacao" using primary key columns
+  status_consolidacao_by_pk(id: Int!): status_consolidacao
+
+  # fetch data from the table: "tipo_erro"
+  tipo_erro(
+    # distinct select on columns
+    distinct_on: [tipo_erro_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_erro_order_by!]
+
+    # filter the rows returned
+    where: tipo_erro_bool_exp
+  ): [tipo_erro!]!
+
+  # fetch aggregated fields from the table: "tipo_erro"
+  tipo_erro_aggregate(
+    # distinct select on columns
+    distinct_on: [tipo_erro_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_erro_order_by!]
+
+    # filter the rows returned
+    where: tipo_erro_bool_exp
+  ): tipo_erro_aggregate!
+
+  # fetch data from the table: "tipo_erro" using primary key columns
+  tipo_erro_by_pk(id: Int!): tipo_erro
+
+  # fetch data from the table: "tipo_prestador"
+  tipo_prestador(
+    # distinct select on columns
+    distinct_on: [tipo_prestador_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_prestador_order_by!]
+
+    # filter the rows returned
+    where: tipo_prestador_bool_exp
+  ): [tipo_prestador!]!
+
+  # fetch aggregated fields from the table: "tipo_prestador"
+  tipo_prestador_aggregate(
+    # distinct select on columns
+    distinct_on: [tipo_prestador_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_prestador_order_by!]
+
+    # filter the rows returned
+    where: tipo_prestador_bool_exp
+  ): tipo_prestador_aggregate!
+
+  # fetch data from the table: "tipo_prestador" using primary key columns
+  tipo_prestador_by_pk(id: Int!): tipo_prestador
+}
+
+# columns and relationships of "status_consolidacao"
+type status_consolidacao {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String!
+  id: Int!
+  updated_at: timestamptz
+}
+
+# aggregated selection of "status_consolidacao"
+type status_consolidacao_aggregate {
+  aggregate: status_consolidacao_aggregate_fields
+  nodes: [status_consolidacao!]!
+}
+
+# aggregate fields of "status_consolidacao"
+type status_consolidacao_aggregate_fields {
+  avg: status_consolidacao_avg_fields
+  count(columns: [status_consolidacao_select_column!], distinct: Boolean): Int
+  max: status_consolidacao_max_fields
+  min: status_consolidacao_min_fields
+  stddev: status_consolidacao_stddev_fields
+  stddev_pop: status_consolidacao_stddev_pop_fields
+  stddev_samp: status_consolidacao_stddev_samp_fields
+  sum: status_consolidacao_sum_fields
+  var_pop: status_consolidacao_var_pop_fields
+  var_samp: status_consolidacao_var_samp_fields
+  variance: status_consolidacao_variance_fields
+}
+
+# order by aggregate values of table "status_consolidacao"
+input status_consolidacao_aggregate_order_by {
+  avg: status_consolidacao_avg_order_by
+  count: order_by
+  max: status_consolidacao_max_order_by
+  min: status_consolidacao_min_order_by
+  stddev: status_consolidacao_stddev_order_by
+  stddev_pop: status_consolidacao_stddev_pop_order_by
+  stddev_samp: status_consolidacao_stddev_samp_order_by
+  sum: status_consolidacao_sum_order_by
+  var_pop: status_consolidacao_var_pop_order_by
+  var_samp: status_consolidacao_var_samp_order_by
+  variance: status_consolidacao_variance_order_by
+}
+
+# input type for inserting array relation for remote table "status_consolidacao"
+input status_consolidacao_arr_rel_insert_input {
+  data: [status_consolidacao_insert_input!]!
+  on_conflict: status_consolidacao_on_conflict
+}
+
+# aggregate avg on columns
+type status_consolidacao_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "status_consolidacao"
+input status_consolidacao_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "status_consolidacao". All fields are combined with a logical 'AND'.
+input status_consolidacao_bool_exp {
+  _and: [status_consolidacao_bool_exp]
+  _not: status_consolidacao_bool_exp
+  _or: [status_consolidacao_bool_exp]
+  created_at: timestamptz_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  descricao: String_comparison_exp
+  id: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# unique or primary key constraints on table "status_consolidacao"
+enum status_consolidacao_constraint {
+  # unique or primary key constraint
+  status_consolidacao_pkey
+}
+
+# input type for incrementing integer columne in table "status_consolidacao"
+input status_consolidacao_inc_input {
+  id: Int
+}
+
+# input type for inserting data into table "status_consolidacao"
+input status_consolidacao_insert_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# aggregate max on columns
+type status_consolidacao_max_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "status_consolidacao"
+input status_consolidacao_max_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type status_consolidacao_min_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "status_consolidacao"
+input status_consolidacao_min_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# response of any mutation on the table "status_consolidacao"
+type status_consolidacao_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [status_consolidacao!]!
+}
+
+# input type for inserting object relation for remote table "status_consolidacao"
+input status_consolidacao_obj_rel_insert_input {
+  data: status_consolidacao_insert_input!
+  on_conflict: status_consolidacao_on_conflict
+}
+
+# on conflict condition type for table "status_consolidacao"
+input status_consolidacao_on_conflict {
+  constraint: status_consolidacao_constraint!
+  update_columns: [status_consolidacao_update_column!]!
+  where: status_consolidacao_bool_exp
+}
+
+# ordering options when selecting data from "status_consolidacao"
+input status_consolidacao_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# select columns of table "status_consolidacao"
+enum status_consolidacao_select_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  updated_at
+}
+
+# input type for updating data in table "status_consolidacao"
+input status_consolidacao_set_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# aggregate stddev on columns
+type status_consolidacao_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "status_consolidacao"
+input status_consolidacao_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type status_consolidacao_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "status_consolidacao"
+input status_consolidacao_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type status_consolidacao_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "status_consolidacao"
+input status_consolidacao_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type status_consolidacao_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "status_consolidacao"
+input status_consolidacao_sum_order_by {
+  id: order_by
+}
+
+# update columns of table "status_consolidacao"
+enum status_consolidacao_update_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  updated_at
+}
+
+# aggregate var_pop on columns
+type status_consolidacao_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "status_consolidacao"
+input status_consolidacao_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type status_consolidacao_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "status_consolidacao"
+input status_consolidacao_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type status_consolidacao_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "status_consolidacao"
+input status_consolidacao_variance_order_by {
+  id: order_by
+}
+
+# expression to compare columns of type String. All fields are combined with logical 'AND'.
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+# subscription root
+type subscription_root {
+  # fetch data from the table: "consolidacao"
+  consolidacao(
+    # distinct select on columns
+    distinct_on: [consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [consolidacao_order_by!]
+
+    # filter the rows returned
+    where: consolidacao_bool_exp
+  ): [consolidacao!]!
+
+  # fetch aggregated fields from the table: "consolidacao"
+  consolidacao_aggregate(
+    # distinct select on columns
+    distinct_on: [consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [consolidacao_order_by!]
+
+    # filter the rows returned
+    where: consolidacao_bool_exp
+  ): consolidacao_aggregate!
+
+  # fetch data from the table: "consolidacao" using primary key columns
+  consolidacao_by_pk(id: Int!): consolidacao
+
+  # fetch data from the table: "convenios"
+  convenios(
+    # distinct select on columns
+    distinct_on: [convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [convenios_order_by!]
+
+    # filter the rows returned
+    where: convenios_bool_exp
+  ): [convenios!]!
+
+  # fetch aggregated fields from the table: "convenios"
+  convenios_aggregate(
+    # distinct select on columns
+    distinct_on: [convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [convenios_order_by!]
+
+    # filter the rows returned
+    where: convenios_bool_exp
+  ): convenios_aggregate!
+
+  # fetch data from the table: "convenios" using primary key columns
+  convenios_by_pk(id: Int!): convenios
+
+  # fetch data from the table: "importacao_convenios"
+  importacao_convenios(
+    # distinct select on columns
+    distinct_on: [importacao_convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_convenios_order_by!]
+
+    # filter the rows returned
+    where: importacao_convenios_bool_exp
+  ): [importacao_convenios!]!
+
+  # fetch aggregated fields from the table: "importacao_convenios"
+  importacao_convenios_aggregate(
+    # distinct select on columns
+    distinct_on: [importacao_convenios_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_convenios_order_by!]
+
+    # filter the rows returned
+    where: importacao_convenios_bool_exp
+  ): importacao_convenios_aggregate!
+
+  # fetch data from the table: "importacao_convenios" using primary key columns
+  importacao_convenios_by_pk(id: bigint!): importacao_convenios
+
+  # fetch data from the table: "importacao_guias"
+  importacao_guias(
+    # distinct select on columns
+    distinct_on: [importacao_guias_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_guias_order_by!]
+
+    # filter the rows returned
+    where: importacao_guias_bool_exp
+  ): [importacao_guias!]!
+
+  # fetch aggregated fields from the table: "importacao_guias"
+  importacao_guias_aggregate(
+    # distinct select on columns
+    distinct_on: [importacao_guias_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [importacao_guias_order_by!]
+
+    # filter the rows returned
+    where: importacao_guias_bool_exp
+  ): importacao_guias_aggregate!
+
+  # fetch data from the table: "importacao_guias" using primary key columns
+  importacao_guias_by_pk(id: bigint!): importacao_guias
+
+  # fetch data from the table: "prestadores_servicos"
+  prestadores_servicos(
+    # distinct select on columns
+    distinct_on: [prestadores_servicos_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [prestadores_servicos_order_by!]
+
+    # filter the rows returned
+    where: prestadores_servicos_bool_exp
+  ): [prestadores_servicos!]!
+
+  # fetch aggregated fields from the table: "prestadores_servicos"
+  prestadores_servicos_aggregate(
+    # distinct select on columns
+    distinct_on: [prestadores_servicos_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [prestadores_servicos_order_by!]
+
+    # filter the rows returned
+    where: prestadores_servicos_bool_exp
+  ): prestadores_servicos_aggregate!
+
+  # fetch data from the table: "prestadores_servicos" using primary key columns
+  prestadores_servicos_by_pk(id: Int!): prestadores_servicos
+
+  # fetch data from the table: "status_consolidacao"
+  status_consolidacao(
+    # distinct select on columns
+    distinct_on: [status_consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [status_consolidacao_order_by!]
+
+    # filter the rows returned
+    where: status_consolidacao_bool_exp
+  ): [status_consolidacao!]!
+
+  # fetch aggregated fields from the table: "status_consolidacao"
+  status_consolidacao_aggregate(
+    # distinct select on columns
+    distinct_on: [status_consolidacao_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [status_consolidacao_order_by!]
+
+    # filter the rows returned
+    where: status_consolidacao_bool_exp
+  ): status_consolidacao_aggregate!
+
+  # fetch data from the table: "status_consolidacao" using primary key columns
+  status_consolidacao_by_pk(id: Int!): status_consolidacao
+
+  # fetch data from the table: "tipo_erro"
+  tipo_erro(
+    # distinct select on columns
+    distinct_on: [tipo_erro_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_erro_order_by!]
+
+    # filter the rows returned
+    where: tipo_erro_bool_exp
+  ): [tipo_erro!]!
+
+  # fetch aggregated fields from the table: "tipo_erro"
+  tipo_erro_aggregate(
+    # distinct select on columns
+    distinct_on: [tipo_erro_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_erro_order_by!]
+
+    # filter the rows returned
+    where: tipo_erro_bool_exp
+  ): tipo_erro_aggregate!
+
+  # fetch data from the table: "tipo_erro" using primary key columns
+  tipo_erro_by_pk(id: Int!): tipo_erro
+
+  # fetch data from the table: "tipo_prestador"
+  tipo_prestador(
+    # distinct select on columns
+    distinct_on: [tipo_prestador_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_prestador_order_by!]
+
+    # filter the rows returned
+    where: tipo_prestador_bool_exp
+  ): [tipo_prestador!]!
+
+  # fetch aggregated fields from the table: "tipo_prestador"
+  tipo_prestador_aggregate(
+    # distinct select on columns
+    distinct_on: [tipo_prestador_select_column!]
+
+    # limit the number of rows returned
+    limit: Int
+
+    # skip the first n rows. Use only with order_by
+    offset: Int
+
+    # sort the rows by one or more columns
+    order_by: [tipo_prestador_order_by!]
+
+    # filter the rows returned
+    where: tipo_prestador_bool_exp
+  ): tipo_prestador_aggregate!
+
+  # fetch data from the table: "tipo_prestador" using primary key columns
+  tipo_prestador_by_pk(id: Int!): tipo_prestador
+}
+
+scalar timestamptz
+
+# expression to compare columns of type timestamptz. All fields are combined with logical 'AND'.
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
+}
+
+# columns and relationships of "tipo_erro"
+type tipo_erro {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String!
+  id: Int!
+  updated_at: timestamptz
+}
+
+# aggregated selection of "tipo_erro"
+type tipo_erro_aggregate {
+  aggregate: tipo_erro_aggregate_fields
+  nodes: [tipo_erro!]!
+}
+
+# aggregate fields of "tipo_erro"
+type tipo_erro_aggregate_fields {
+  avg: tipo_erro_avg_fields
+  count(columns: [tipo_erro_select_column!], distinct: Boolean): Int
+  max: tipo_erro_max_fields
+  min: tipo_erro_min_fields
+  stddev: tipo_erro_stddev_fields
+  stddev_pop: tipo_erro_stddev_pop_fields
+  stddev_samp: tipo_erro_stddev_samp_fields
+  sum: tipo_erro_sum_fields
+  var_pop: tipo_erro_var_pop_fields
+  var_samp: tipo_erro_var_samp_fields
+  variance: tipo_erro_variance_fields
+}
+
+# order by aggregate values of table "tipo_erro"
+input tipo_erro_aggregate_order_by {
+  avg: tipo_erro_avg_order_by
+  count: order_by
+  max: tipo_erro_max_order_by
+  min: tipo_erro_min_order_by
+  stddev: tipo_erro_stddev_order_by
+  stddev_pop: tipo_erro_stddev_pop_order_by
+  stddev_samp: tipo_erro_stddev_samp_order_by
+  sum: tipo_erro_sum_order_by
+  var_pop: tipo_erro_var_pop_order_by
+  var_samp: tipo_erro_var_samp_order_by
+  variance: tipo_erro_variance_order_by
+}
+
+# input type for inserting array relation for remote table "tipo_erro"
+input tipo_erro_arr_rel_insert_input {
+  data: [tipo_erro_insert_input!]!
+  on_conflict: tipo_erro_on_conflict
+}
+
+# aggregate avg on columns
+type tipo_erro_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "tipo_erro"
+input tipo_erro_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "tipo_erro". All fields are combined with a logical 'AND'.
+input tipo_erro_bool_exp {
+  _and: [tipo_erro_bool_exp]
+  _not: tipo_erro_bool_exp
+  _or: [tipo_erro_bool_exp]
+  created_at: timestamptz_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  descricao: String_comparison_exp
+  id: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# unique or primary key constraints on table "tipo_erro"
+enum tipo_erro_constraint {
+  # unique or primary key constraint
+  tipo_erro_pkey
+}
+
+# input type for incrementing integer columne in table "tipo_erro"
+input tipo_erro_inc_input {
+  id: Int
+}
+
+# input type for inserting data into table "tipo_erro"
+input tipo_erro_insert_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# aggregate max on columns
+type tipo_erro_max_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "tipo_erro"
+input tipo_erro_max_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type tipo_erro_min_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "tipo_erro"
+input tipo_erro_min_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# response of any mutation on the table "tipo_erro"
+type tipo_erro_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [tipo_erro!]!
+}
+
+# input type for inserting object relation for remote table "tipo_erro"
+input tipo_erro_obj_rel_insert_input {
+  data: tipo_erro_insert_input!
+  on_conflict: tipo_erro_on_conflict
+}
+
+# on conflict condition type for table "tipo_erro"
+input tipo_erro_on_conflict {
+  constraint: tipo_erro_constraint!
+  update_columns: [tipo_erro_update_column!]!
+  where: tipo_erro_bool_exp
+}
+
+# ordering options when selecting data from "tipo_erro"
+input tipo_erro_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# select columns of table "tipo_erro"
+enum tipo_erro_select_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  updated_at
+}
+
+# input type for updating data in table "tipo_erro"
+input tipo_erro_set_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# aggregate stddev on columns
+type tipo_erro_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "tipo_erro"
+input tipo_erro_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type tipo_erro_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "tipo_erro"
+input tipo_erro_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type tipo_erro_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "tipo_erro"
+input tipo_erro_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type tipo_erro_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "tipo_erro"
+input tipo_erro_sum_order_by {
+  id: order_by
+}
+
+# update columns of table "tipo_erro"
+enum tipo_erro_update_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  updated_at
+}
+
+# aggregate var_pop on columns
+type tipo_erro_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "tipo_erro"
+input tipo_erro_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type tipo_erro_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "tipo_erro"
+input tipo_erro_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type tipo_erro_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "tipo_erro"
+input tipo_erro_variance_order_by {
+  id: order_by
+}
+
+# columns and relationships of "tipo_prestador"
+type tipo_prestador {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String!
+  id: Int!
+  updated_at: timestamptz
+}
+
+# aggregated selection of "tipo_prestador"
+type tipo_prestador_aggregate {
+  aggregate: tipo_prestador_aggregate_fields
+  nodes: [tipo_prestador!]!
+}
+
+# aggregate fields of "tipo_prestador"
+type tipo_prestador_aggregate_fields {
+  avg: tipo_prestador_avg_fields
+  count(columns: [tipo_prestador_select_column!], distinct: Boolean): Int
+  max: tipo_prestador_max_fields
+  min: tipo_prestador_min_fields
+  stddev: tipo_prestador_stddev_fields
+  stddev_pop: tipo_prestador_stddev_pop_fields
+  stddev_samp: tipo_prestador_stddev_samp_fields
+  sum: tipo_prestador_sum_fields
+  var_pop: tipo_prestador_var_pop_fields
+  var_samp: tipo_prestador_var_samp_fields
+  variance: tipo_prestador_variance_fields
+}
+
+# order by aggregate values of table "tipo_prestador"
+input tipo_prestador_aggregate_order_by {
+  avg: tipo_prestador_avg_order_by
+  count: order_by
+  max: tipo_prestador_max_order_by
+  min: tipo_prestador_min_order_by
+  stddev: tipo_prestador_stddev_order_by
+  stddev_pop: tipo_prestador_stddev_pop_order_by
+  stddev_samp: tipo_prestador_stddev_samp_order_by
+  sum: tipo_prestador_sum_order_by
+  var_pop: tipo_prestador_var_pop_order_by
+  var_samp: tipo_prestador_var_samp_order_by
+  variance: tipo_prestador_variance_order_by
+}
+
+# input type for inserting array relation for remote table "tipo_prestador"
+input tipo_prestador_arr_rel_insert_input {
+  data: [tipo_prestador_insert_input!]!
+  on_conflict: tipo_prestador_on_conflict
+}
+
+# aggregate avg on columns
+type tipo_prestador_avg_fields {
+  id: Float
+}
+
+# order by avg() on columns of table "tipo_prestador"
+input tipo_prestador_avg_order_by {
+  id: order_by
+}
+
+# Boolean expression to filter rows from the table "tipo_prestador". All fields are combined with a logical 'AND'.
+input tipo_prestador_bool_exp {
+  _and: [tipo_prestador_bool_exp]
+  _not: tipo_prestador_bool_exp
+  _or: [tipo_prestador_bool_exp]
+  created_at: timestamptz_comparison_exp
+  deleted_at: timestamptz_comparison_exp
+  descricao: String_comparison_exp
+  id: Int_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+# unique or primary key constraints on table "tipo_prestador"
+enum tipo_prestador_constraint {
+  # unique or primary key constraint
+  tipo_prestador_pkey
+}
+
+# input type for incrementing integer columne in table "tipo_prestador"
+input tipo_prestador_inc_input {
+  id: Int
+}
+
+# input type for inserting data into table "tipo_prestador"
+input tipo_prestador_insert_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# aggregate max on columns
+type tipo_prestador_max_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# order by max() on columns of table "tipo_prestador"
+input tipo_prestador_max_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# aggregate min on columns
+type tipo_prestador_min_fields {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# order by min() on columns of table "tipo_prestador"
+input tipo_prestador_min_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# response of any mutation on the table "tipo_prestador"
+type tipo_prestador_mutation_response {
+  # number of affected rows by the mutation
+  affected_rows: Int!
+
+  # data of the affected rows by the mutation
+  returning: [tipo_prestador!]!
+}
+
+# input type for inserting object relation for remote table "tipo_prestador"
+input tipo_prestador_obj_rel_insert_input {
+  data: tipo_prestador_insert_input!
+  on_conflict: tipo_prestador_on_conflict
+}
+
+# on conflict condition type for table "tipo_prestador"
+input tipo_prestador_on_conflict {
+  constraint: tipo_prestador_constraint!
+  update_columns: [tipo_prestador_update_column!]!
+  where: tipo_prestador_bool_exp
+}
+
+# ordering options when selecting data from "tipo_prestador"
+input tipo_prestador_order_by {
+  created_at: order_by
+  deleted_at: order_by
+  descricao: order_by
+  id: order_by
+  updated_at: order_by
+}
+
+# select columns of table "tipo_prestador"
+enum tipo_prestador_select_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  updated_at
+}
+
+# input type for updating data in table "tipo_prestador"
+input tipo_prestador_set_input {
+  created_at: timestamptz
+  deleted_at: timestamptz
+  descricao: String
+  id: Int
+  updated_at: timestamptz
+}
+
+# aggregate stddev on columns
+type tipo_prestador_stddev_fields {
+  id: Float
+}
+
+# order by stddev() on columns of table "tipo_prestador"
+input tipo_prestador_stddev_order_by {
+  id: order_by
+}
+
+# aggregate stddev_pop on columns
+type tipo_prestador_stddev_pop_fields {
+  id: Float
+}
+
+# order by stddev_pop() on columns of table "tipo_prestador"
+input tipo_prestador_stddev_pop_order_by {
+  id: order_by
+}
+
+# aggregate stddev_samp on columns
+type tipo_prestador_stddev_samp_fields {
+  id: Float
+}
+
+# order by stddev_samp() on columns of table "tipo_prestador"
+input tipo_prestador_stddev_samp_order_by {
+  id: order_by
+}
+
+# aggregate sum on columns
+type tipo_prestador_sum_fields {
+  id: Int
+}
+
+# order by sum() on columns of table "tipo_prestador"
+input tipo_prestador_sum_order_by {
+  id: order_by
+}
+
+# update columns of table "tipo_prestador"
+enum tipo_prestador_update_column {
+  # column name
+  created_at
+
+  # column name
+  deleted_at
+
+  # column name
+  descricao
+
+  # column name
+  id
+
+  # column name
+  updated_at
+}
+
+# aggregate var_pop on columns
+type tipo_prestador_var_pop_fields {
+  id: Float
+}
+
+# order by var_pop() on columns of table "tipo_prestador"
+input tipo_prestador_var_pop_order_by {
+  id: order_by
+}
+
+# aggregate var_samp on columns
+type tipo_prestador_var_samp_fields {
+  id: Float
+}
+
+# order by var_samp() on columns of table "tipo_prestador"
+input tipo_prestador_var_samp_order_by {
+  id: order_by
+}
+
+# aggregate variance on columns
+type tipo_prestador_variance_fields {
+  id: Float
+}
+
+# order by variance() on columns of table "tipo_prestador"
+input tipo_prestador_variance_order_by {
+  id: order_by
+}
+
