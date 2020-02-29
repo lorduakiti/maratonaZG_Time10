@@ -1,12 +1,16 @@
+//Importa as dependências que acabamos de instalar
 const express = require('express');
 const path = require('path');
-const nomeApp = process.env.npm_package_name;
+
 const app = express();
 
-app.use(express.static(`${__dirname}/Frontend/dist/`));
+// Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
+app.use(express.static(__dirname + '/Frontend/dist/maratona-zgtime10'));
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(`${__dirname}/Frontend/dist/index.html`));
+app.get('/*', function (req, res) {
+
+    res.sendFile(path.join(__dirname + '/Frontend/dist/maratona-zgtime10/index.html'));
 });
 
+// Inicia a aplicação pela porta configurada
 app.listen(process.env.PORT || 8080);
