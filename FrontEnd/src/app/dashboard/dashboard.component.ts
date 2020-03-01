@@ -54,6 +54,8 @@ export class DashboardComponent implements OnInit {
 
   public convenioSelecionado = 1;
 
+  public valorTotalGlosa = 0;
+
   constructor(private apollo: Apollo) {
 
 
@@ -146,7 +148,19 @@ export class DashboardComponent implements OnInit {
 
       this.importacao_guias = result.data.importacao_guias;
 
-      this.prestadores_servicos = result.data.prestadores_servico;
+      this.prestadores_servicos = result.data.prestadores_servicos;
+
+      this.valorTotalGlosa = 0;
+      this.importacao_convenios.map(
+        x => {
+          if (parseInt(x.valor_glosa, 10)) {
+            this.valorTotalGlosa = this.valorTotalGlosa + parseInt(x.valor_glosa, 10);
+          }
+
+        }
+      )
+
+
 
     });
 
