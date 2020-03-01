@@ -1,15 +1,20 @@
 // const path = require('path');
 const express = require('express');
-var router = express.Router(),
+var routes = express.Router(),
 	bodyParser = require('body-parser'),
 	swaggerUi = require('swagger-ui-express'),
 	swaggerDocument = require('./swagger.json');
 // var https = require("https");
 // var options = {
-// 	key  : fs.readFileSync("my.private.key"),
+// 	key  : fs.readFileSync("my.= private.key"),
 // 	cert : fs.readFileSync("my.certificate.cer")
 // };
+
+var ProcessaConsolidacao = require('./automacoes/ProcessaConsolidacao');
+
 const port = 3000;
+
+
 
 
 // Iniciando o App
@@ -36,10 +41,27 @@ app.get('/teste', (req, res, next) => {
 });
 
 
-
-
+// Documentação swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-app.use('/api/v1', router);
+
+
+// Teste rotas
+routes.get('/', (req, res) => {
+    res.send('Online!');
+});
+
+// Implementando rotas de processamento
+//./prestadores/ERPMariaPenha
+routes.get('/processamentos', ProcessaConsolidacao.list);
+
+routes.post('/processamento/start', ProcessaConsolidacao.start);
+
+routes.post('/processamento/stop', ProcessaConsolidacao.stop);
+
+routes.get('/processamento/status', ProcessaConsolidacao.status);
+
+
+app.use('/api/v1', routes);
 
 //app.listen(port);
 app.listen(port, () => {
