@@ -1,0 +1,384 @@
+{
+    "name": "Importar Guias do Hospital - Codigo 1",
+    "flow": [
+        {
+            "id": 3,
+            "module": "postgres:Query",
+            "version": 2,
+            "parameters": {
+                "account": 1050167,
+                "continueWhenNoRes": true
+            },
+            "mapper": {
+                "command": "SELECT  G.NUMERO AS numeroGuia,\n\tC.nome AS nomeOperadora,\n\tC.ans,\n\tP.nome AS nomePrestador,\n\tP.cnpj,\n\tB.nome AS nomeBeneficiario,\n\tB.matricula,\n\tG.data AS dataAtendimento,\n\tG.valor_total AS valorTotalGuia,\n\tIG.numero AS numeroItem,\n\tPR.codigo,\n\tPR.nome,\n\tPR.valor_unitario AS valorUnitario,\n\tIG.quantidade,\n\tIG.valor_total AS valorTotal,\n\tC.id AS id_convenios,\n\tP.id AS id_prestadores_servicos\nFROM guia G\n\tLEFT JOIN item_guia IG\n\t\tON IG.guia_id = G.id\n\tLEFT JOIN produto PR\n\t\tON PR.id = IG.produto_id\n\tJOIN convenio C\n\t\tON C.id = G.convenio_id\n\tJOIN prestador P\n\t\tON P.id = G.prestador_id\n\tJOIN beneficiario B\n\t\tON B.id = G.beneficiario_id\nWHERE g.numero = '12742071041'\nLIMIT 20"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 150,
+                    "name": "PostgreSQL - Buscar guias de ontem"
+                },
+                "restore": {
+                    "account": {
+                        "label": "My PostgreSQL Hospital"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "continueWhenNoRes",
+                        "type": "boolean",
+                        "label": "Continue the execution of the route even if the module returns no rows",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "command",
+                        "type": "text",
+                        "label": "Command",
+                        "required": true,
+                        "multiline": true
+                    }
+                ]
+            },
+            "onerror": [
+                {
+                    "id": 14,
+                    "module": "util:FunctionIncrement",
+                    "version": 1,
+                    "parameters": {
+                        "reset": "scenario"
+                    },
+                    "mapper": {},
+                    "metadata": {
+                        "designer": {
+                            "x": 300,
+                            "y": 300,
+                            "name": "Contador 2"
+                        },
+                        "restore": {
+                            "reset": {
+                                "label": "Never"
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "reset",
+                                "type": "select",
+                                "label": "Reset a value",
+                                "required": true,
+                                "validate": {
+                                    "enum": [
+                                        "run",
+                                        "execution",
+                                        "scenario"
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": 13,
+                    "module": "postgres:InsertIntoTable",
+                    "version": 2,
+                    "parameters": {
+                        "table": "\"public\".\"log_importacoes\"",
+                        "account": 1050177
+                    },
+                    "mapper": {
+                        "@id": "",
+                        "@data": "{{now}}",
+                        "@link": "{{3.error.detail}}",
+                        "@source": "sql-hospital",
+                        "@status": "",
+                        "@created_at": "{{now}}",
+                        "@deleted_at": "",
+                        "@lote_importacao": "{{14.i}}",
+                        "@referencia_documento": "{{3.error.message}}"
+                    },
+                    "metadata": {
+                        "designer": {
+                            "x": 600,
+                            "y": 300,
+                            "name": "Salvar erro no banco"
+                        },
+                        "restore": {
+                            "table": {
+                                "label": "public.log_importacoes"
+                            },
+                            "account": {
+                                "label": "My PostgreSQL Time 10"
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "account",
+                                "type": "account",
+                                "label": "Connection",
+                                "required": true
+                            },
+                            {
+                                "name": "table",
+                                "type": "select",
+                                "label": "Table",
+                                "required": true
+                            }
+                        ],
+                        "expect": [
+                            {
+                                "name": "@id",
+                                "type": "integer",
+                                "label": "id"
+                            },
+                            {
+                                "name": "@source",
+                                "type": "text",
+                                "label": "source",
+                                "required": null
+                            },
+                            {
+                                "name": "@lote_importacao",
+                                "type": "text",
+                                "label": "lote_importacao",
+                                "required": null
+                            },
+                            {
+                                "name": "@data",
+                                "type": "text",
+                                "label": "data"
+                            },
+                            {
+                                "name": "@referencia_documento",
+                                "type": "text",
+                                "label": "referencia_documento"
+                            },
+                            {
+                                "name": "@link",
+                                "type": "text",
+                                "label": "link"
+                            },
+                            {
+                                "name": "@created_at",
+                                "type": "text",
+                                "label": "created_at"
+                            },
+                            {
+                                "name": "@deleted_at",
+                                "type": "text",
+                                "label": "deleted_at"
+                            },
+                            {
+                                "name": "@status",
+                                "type": "text",
+                                "label": "status"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "module": "postgres:InsertIntoTable",
+            "version": 2,
+            "parameters": {
+                "table": "\"public\".\"importacao_guias\"",
+                "account": 1050177
+            },
+            "mapper": {
+                "@id": "",
+                "@ans": "{{3.ans}}",
+                "@cnpj": "{{3.cnpj}}",
+                "@nome": "{{3.nome}}",
+                "@codigo": "{{3.codigo}}",
+                "@source": "sql-integromat",
+                "@sistema": "erp-time10.zeroglosa.com.br",
+                "@matricula": "{{3.matricula}}",
+                "@created_at": "{{now}}",
+                "@deleted_at": "",
+                "@numeroGuia": "{{3.numeroguia}}",
+                "@numeroItem": "{{3.numeroitem}}",
+                "@quantidade": "{{3.quantidade}}",
+                "@updated_at": "",
+                "@valorTotal": "{{3.valortotal}}",
+                "@id_convenios": "{{3.id_convenios}}",
+                "@nomeOperadora": "{{3.nomeoperadora}}",
+                "@nomePrestador": "{{3.nomeprestador}}",
+                "@valorUnitario": "{{3.valorunitario}}",
+                "@valorTotalGuia": "{{3.valortotalguia}}",
+                "@dataAtendimento": "{{3.dataatendimento}}",
+                "@nomeBeneficiario": "{{3.nomebeneficiario}}",
+                "@id_prestadores_servico": "1"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0,
+                    "name": "Salvar guias no banco"
+                },
+                "restore": {
+                    "table": {
+                        "label": "public.importacao_guias"
+                    },
+                    "account": {
+                        "label": "My PostgreSQL Time 10"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "@id",
+                        "type": "integer",
+                        "label": "id"
+                    },
+                    {
+                        "name": "@numeroGuia",
+                        "type": "text",
+                        "label": "numeroGuia"
+                    },
+                    {
+                        "name": "@nomeOperadora",
+                        "type": "text",
+                        "label": "nomeOperadora"
+                    },
+                    {
+                        "name": "@ans",
+                        "type": "text",
+                        "label": "ans"
+                    },
+                    {
+                        "name": "@nomePrestador",
+                        "type": "text",
+                        "label": "nomePrestador"
+                    },
+                    {
+                        "name": "@cnpj",
+                        "type": "text",
+                        "label": "cnpj"
+                    },
+                    {
+                        "name": "@nomeBeneficiario",
+                        "type": "text",
+                        "label": "nomeBeneficiario"
+                    },
+                    {
+                        "name": "@matricula",
+                        "type": "text",
+                        "label": "matricula"
+                    },
+                    {
+                        "name": "@dataAtendimento",
+                        "type": "text",
+                        "label": "dataAtendimento"
+                    },
+                    {
+                        "name": "@valorTotalGuia",
+                        "type": "text",
+                        "label": "valorTotalGuia"
+                    },
+                    {
+                        "name": "@numeroItem",
+                        "type": "text",
+                        "label": "numeroItem"
+                    },
+                    {
+                        "name": "@codigo",
+                        "type": "text",
+                        "label": "codigo"
+                    },
+                    {
+                        "name": "@nome",
+                        "type": "text",
+                        "label": "nome"
+                    },
+                    {
+                        "name": "@valorUnitario",
+                        "type": "text",
+                        "label": "valorUnitario"
+                    },
+                    {
+                        "name": "@quantidade",
+                        "type": "text",
+                        "label": "quantidade"
+                    },
+                    {
+                        "name": "@valorTotal",
+                        "type": "text",
+                        "label": "valorTotal"
+                    },
+                    {
+                        "name": "@created_at",
+                        "type": "text",
+                        "label": "created_at"
+                    },
+                    {
+                        "name": "@updated_at",
+                        "type": "text",
+                        "label": "updated_at"
+                    },
+                    {
+                        "name": "@source",
+                        "type": "text",
+                        "label": "source"
+                    },
+                    {
+                        "name": "@sistema",
+                        "type": "text",
+                        "label": "sistema"
+                    },
+                    {
+                        "name": "@id_convenios",
+                        "type": "integer",
+                        "label": "id_convenios"
+                    },
+                    {
+                        "name": "@id_prestadores_servico",
+                        "type": "integer",
+                        "label": "id_prestadores_servico"
+                    },
+                    {
+                        "name": "@deleted_at",
+                        "type": "text",
+                        "label": "deleted_at"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": false,
+            "sequential": false,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.integromat.com"
+    }
+}

@@ -1,0 +1,691 @@
+{
+    "name": "Importar XML GlosaMax -  Código 1",
+    "flow": [
+        {
+            "id": 1,
+            "module": "google-drive:TriggerNewFile",
+            "version": 3,
+            "parameters": {
+                "watch": "onlyNew",
+                "account": 1032006,
+                "folderId": "/13YrVQpOBj0BjBy4VrRdluAeYCKbFYH48/12k4ACJsF_tyPrGFOZQY2tR3ccVF0DDvm/1wMSmtLJWgOp3dWKJBfBSmdeeFR6_UG-M",
+                "mimeType": "all",
+                "maxResults": 2,
+                "formatDrawings": "image/jpeg",
+                "formatDocuments": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "formatSpreadsheets": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "formatPresentations": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "watch": {
+                        "label": "New files and all changes"
+                    },
+                    "account": {
+                        "label": "My Google connection (khyquer.oliveira@gmail.com)"
+                    },
+                    "folderId": {
+                        "path": [
+                            "Desafio ZG",
+                            "Input",
+                            "glosamax"
+                        ]
+                    },
+                    "mimeType": {
+                        "label": "All"
+                    },
+                    "formatDrawings": {
+                        "label": "JPEG"
+                    },
+                    "formatDocuments": {
+                        "label": "MS Word Document"
+                    },
+                    "formatSpreadsheets": {
+                        "label": "MS Excel"
+                    },
+                    "formatPresentations": {
+                        "label": "MS PowerPoint"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "mimeType",
+                        "type": "select",
+                        "label": "What files to watch",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "all",
+                                "application/vnd.google-apps.document",
+                                "application/vnd.google-apps.spreadsheet",
+                                "application/vnd.google-apps.presentation",
+                                "application/vnd.google-apps.drawing"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "watch",
+                        "type": "select",
+                        "label": "Watch",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "onlyNew",
+                                "allChanges"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "uinteger",
+                        "label": "Maximum number of downloaded files",
+                        "required": true
+                    },
+                    {
+                        "name": "formatDocuments",
+                        "type": "select",
+                        "label": "Convert Google Documents files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "application/pdf",
+                                "application/vnd.oasis.opendocument.text",
+                                "text/html",
+                                "text/plain",
+                                "application/rtf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatSpreadsheets",
+                        "type": "select",
+                        "label": "Convert Google Spreadsheets files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "application/x-vnd.oasis.opendocument.spreadsheet",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatPresentations",
+                        "type": "select",
+                        "label": "Convert Google Slides files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatDrawings",
+                        "type": "select",
+                        "label": "Convert Google Drawings files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "image/jpeg",
+                                "image/png",
+                                "image/svg+xml",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "folderId",
+                        "type": "folder",
+                        "label": "Select the folder to be watched.",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "google-drive:ActionGetFile",
+            "version": 3,
+            "parameters": {
+                "account": 1032006,
+                "formatDrawings": "image/jpeg",
+                "formatDocuments": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "formatSpreadsheets": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "formatPresentations": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            },
+            "mapper": {
+                "id": "{{1.id}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "account": {
+                        "label": "My Google connection (khyquer.oliveira@gmail.com)"
+                    },
+                    "formatDrawings": {
+                        "label": "JPEG"
+                    },
+                    "formatDocuments": {
+                        "label": "MS Word Document"
+                    },
+                    "formatSpreadsheets": {
+                        "label": "MS Excel"
+                    },
+                    "formatPresentations": {
+                        "label": "MS PowerPoint"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "formatDocuments",
+                        "type": "select",
+                        "label": "Convert Google Documents files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "application/pdf",
+                                "application/vnd.oasis.opendocument.text",
+                                "text/html",
+                                "text/plain",
+                                "application/rtf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatSpreadsheets",
+                        "type": "select",
+                        "label": "Convert Google Spreadsheets files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "application/x-vnd.oasis.opendocument.spreadsheet",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatPresentations",
+                        "type": "select",
+                        "label": "Convert Google Slides files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatDrawings",
+                        "type": "select",
+                        "label": "Convert Google Drawings files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "image/jpeg",
+                                "image/png",
+                                "image/svg+xml",
+                                "application/pdf"
+                            ]
+                        }
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "File ID",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 6,
+            "module": "util:FunctionIncrement",
+            "version": 1,
+            "parameters": {
+                "reset": "scenario"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "reset": {
+                        "label": "Never"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "reset",
+                        "type": "select",
+                        "label": "Reset a value",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "run",
+                                "execution",
+                                "scenario"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "xml:ParseXML",
+            "version": 1,
+            "parameters": {
+                "type": 84253,
+                "preserveNumbersAsText": false
+            },
+            "mapper": {
+                "xml": "{{3.data}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "restore": {
+                    "type": {
+                        "label": "XML Glosamax"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "type",
+                        "type": "udt",
+                        "label": "Data structure",
+                        "required": true
+                    },
+                    {
+                        "name": "preserveNumbersAsText",
+                        "type": "boolean",
+                        "label": "Preserve numbers as text",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "xml",
+                        "type": "text",
+                        "label": "XML",
+                        "required": true
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "data",
+                        "spec": [
+                            {
+                                "name": "row",
+                                "spec": {
+                                    "spec": [
+                                        {
+                                            "name": "convenio",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "data_pagamento",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "numero_protocolo",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "matricula",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "nome",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "numero_guia",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "ng_prest",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "senha_guia",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "codigo_produto",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "descricao_produto",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "valor_apresentado",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "valor_pago",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "valor_glosa",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "descricao_motivo",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        },
+                                        {
+                                            "name": "codigo_motivo",
+                                            "spec": {
+                                                "type": "text"
+                                            },
+                                            "type": "array"
+                                        }
+                                    ],
+                                    "type": "collection",
+                                    "sequence": true
+                                },
+                                "type": "array"
+                            }
+                        ],
+                        "type": "collection",
+                        "sequence": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "module": "builtin:BasicFeeder",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "array": "{{2.data.row}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 0
+                },
+                "restore": {
+                    "array": {
+                        "mode": "edit"
+                    }
+                },
+                "expect": [
+                    {
+                        "mode": "edit",
+                        "name": "array",
+                        "spec": [],
+                        "type": "array",
+                        "label": "Array"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "module": "postgres:InsertIntoTable",
+            "version": 2,
+            "parameters": {
+                "table": "\"public\".\"importacao_convenios\"",
+                "account": 1050177
+            },
+            "mapper": {
+                "@id": "",
+                "@nome": "{{4.nome[]}}",
+                "@source": "{{3.fileName}}",
+                "@convenio": "{{4.convenio[]}}",
+                "@ng_prest": "{{4.ng_prest[]}}",
+                "@matricula": "{{4.matricula[]}}",
+                "@created_at": "{{now}}",
+                "@deleted_at": "",
+                "@senha_guia": "{{4.senha_guia[]}}",
+                "@updated_at": "",
+                "@valor_pago": "{{4.valor_pago[]}}",
+                "@id_convenio": "1",
+                "@numero_guia": "{{4.numero_guia[]}}",
+                "@valor_glosa": "{{4.valor_glosa[]}}",
+                "@codigo_motivo": "{{4.codigo_motivo[]}}",
+                "@codigo_produto": "{{4.codigo_produto[]}}",
+                "@data_pagamento": "{{4.data_pagamento[]}}",
+                "@lote_importacao": "{{6.i}}",
+                "@descricao_motivo": "{{4.descricao_motivo[]}}",
+                "@numero_protocolo": "{{4.numero_protocolo[]}}",
+                "@descricao_produto": "{{4.descricao_produto[]}}",
+                "@valor_apresentado": "{{4.valor_apresentado[]}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1500,
+                    "y": 0
+                },
+                "restore": {
+                    "table": {
+                        "label": "public.importacao_convenios"
+                    },
+                    "account": {
+                        "label": "My PostgreSQL Time 10"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "@id",
+                        "type": "integer",
+                        "label": "id"
+                    },
+                    {
+                        "name": "@convenio",
+                        "type": "text",
+                        "label": "convenio"
+                    },
+                    {
+                        "name": "@data_pagamento",
+                        "type": "text",
+                        "label": "data_pagamento"
+                    },
+                    {
+                        "name": "@numero_protocolo",
+                        "type": "text",
+                        "label": "numero_protocolo"
+                    },
+                    {
+                        "name": "@matricula",
+                        "type": "text",
+                        "label": "matricula"
+                    },
+                    {
+                        "name": "@nome",
+                        "type": "text",
+                        "label": "nome"
+                    },
+                    {
+                        "name": "@numero_guia",
+                        "type": "text",
+                        "label": "numero_guia"
+                    },
+                    {
+                        "name": "@ng_prest",
+                        "type": "text",
+                        "label": "ng_prest"
+                    },
+                    {
+                        "name": "@senha_guia",
+                        "type": "text",
+                        "label": "senha_guia"
+                    },
+                    {
+                        "name": "@codigo_produto",
+                        "type": "text",
+                        "label": "codigo_produto"
+                    },
+                    {
+                        "name": "@descricao_produto",
+                        "type": "text",
+                        "label": "descricao_produto"
+                    },
+                    {
+                        "name": "@valor_apresentado",
+                        "type": "text",
+                        "label": "valor_apresentado"
+                    },
+                    {
+                        "name": "@valor_pago",
+                        "type": "text",
+                        "label": "valor_pago"
+                    },
+                    {
+                        "name": "@valor_glosa",
+                        "type": "text",
+                        "label": "valor_glosa"
+                    },
+                    {
+                        "name": "@descricao_motivo",
+                        "type": "text",
+                        "label": "descricao_motivo"
+                    },
+                    {
+                        "name": "@codigo_motivo",
+                        "type": "text",
+                        "label": "codigo_motivo"
+                    },
+                    {
+                        "name": "@created_at",
+                        "type": "text",
+                        "label": "created_at"
+                    },
+                    {
+                        "name": "@updated_at",
+                        "type": "text",
+                        "label": "updated_at"
+                    },
+                    {
+                        "name": "@source",
+                        "type": "text",
+                        "label": "source"
+                    },
+                    {
+                        "name": "@lote_importacao",
+                        "type": "text",
+                        "label": "lote_importacao"
+                    },
+                    {
+                        "name": "@id_convenio",
+                        "type": "integer",
+                        "label": "id_convenio"
+                    },
+                    {
+                        "name": "@deleted_at",
+                        "type": "text",
+                        "label": "deleted_at"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": false,
+            "sequential": false,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.integromat.com"
+    }
+}

@@ -1,0 +1,383 @@
+{
+    "name": "Obter dados da Glosamin",
+    "flow": [
+        {
+            "id": 12,
+            "module": "apify:finishedTaskRun",
+            "version": 1,
+            "parameters": {
+                "__IMTHOOK__": 324383
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 150
+                },
+                "restore": {
+                    "__IMTHOOK__": {
+                        "label": "My Finished Task Run webhook glosamin"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTHOOK__",
+                        "type": "hook",
+                        "label": "Webhook",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "module": "apify:fetchDatasetItems",
+            "version": 1,
+            "parameters": {
+                "__IMTCONN__": 1049939
+            },
+            "mapper": {
+                "type": "clean",
+                "limit": "10",
+                "format": "json",
+                "datasetId": "{{12.defaultDatasetId}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 150
+                },
+                "restore": {
+                    "type": {
+                        "mode": "chose",
+                        "label": "Clean"
+                    },
+                    "format": {
+                        "mode": "chose",
+                        "label": "JSON"
+                    },
+                    "__IMTCONN__": {
+                        "label": "My Apify connection"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "datasetId",
+                        "type": "text",
+                        "label": "Dataset ID",
+                        "required": true
+                    },
+                    {
+                        "name": "type",
+                        "type": "select",
+                        "label": "Data transformation",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "clean",
+                                "simplified",
+                                "none"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "format",
+                        "type": "select",
+                        "label": "Format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "json",
+                                "csv",
+                                "html",
+                                "xml",
+                                "rss",
+                                "xlsx"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "type": "uinteger",
+                        "label": "Limit",
+                        "validate": {
+                            "max": 100000,
+                            "min": 1
+                        }
+                    },
+                    {
+                        "name": "offset",
+                        "type": "uinteger",
+                        "label": "Offset",
+                        "validate": {
+                            "min": 0
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "module": "http:ActionGetFile",
+            "version": 3,
+            "parameters": {
+                "handleErrors": false
+            },
+            "mapper": {
+                "url": "{{7.baseUrl}}{{7.linkdownload}}",
+                "method": "get",
+                "shareCookies": false
+            },
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 150
+                },
+                "parameters": [
+                    {
+                        "name": "handleErrors",
+                        "type": "boolean",
+                        "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "url",
+                        "type": "url",
+                        "label": "URL",
+                        "required": true
+                    },
+                    {
+                        "name": "method",
+                        "type": "hidden",
+                        "label": "Method"
+                    },
+                    {
+                        "name": "shareCookies",
+                        "type": "boolean",
+                        "label": "Share cookies with other HTTP modules",
+                        "required": true
+                    }
+                ]
+            },
+            "onerror": [
+                {
+                    "id": 15,
+                    "module": "postgres:InsertIntoTable",
+                    "version": 2,
+                    "parameters": {
+                        "table": "\"public\".\"log_importacoes\"",
+                        "account": 1050177
+                    },
+                    "mapper": {
+                        "@id": "",
+                        "@data": "{{now}}",
+                        "@link": "{{7.baseUrl}}{{7.linkdownload}}",
+                        "@source": "glosamin-getfile",
+                        "@status": "",
+                        "@created_at": "{{now}}",
+                        "@deleted_at": "",
+                        "@lote_importacao": "{{12.defaultDatasetId}}",
+                        "@referencia_documento": "{{7.linkname}}"
+                    },
+                    "metadata": {
+                        "designer": {
+                            "x": 900,
+                            "y": 300
+                        },
+                        "restore": {
+                            "table": {
+                                "label": "public.log_importacoes"
+                            },
+                            "account": {
+                                "label": "My PostgreSQL Time 10"
+                            }
+                        },
+                        "parameters": [
+                            {
+                                "name": "account",
+                                "type": "account",
+                                "label": "Connection",
+                                "required": true
+                            },
+                            {
+                                "name": "table",
+                                "type": "select",
+                                "label": "Table",
+                                "required": true
+                            }
+                        ],
+                        "expect": [
+                            {
+                                "name": "@id",
+                                "type": "integer",
+                                "label": "id"
+                            },
+                            {
+                                "name": "@source",
+                                "type": "text",
+                                "label": "source",
+                                "required": null
+                            },
+                            {
+                                "name": "@lote_importacao",
+                                "type": "text",
+                                "label": "lote_importacao",
+                                "required": null
+                            },
+                            {
+                                "name": "@data",
+                                "type": "text",
+                                "label": "data"
+                            },
+                            {
+                                "name": "@referencia_documento",
+                                "type": "text",
+                                "label": "referencia_documento"
+                            },
+                            {
+                                "name": "@link",
+                                "type": "text",
+                                "label": "link"
+                            },
+                            {
+                                "name": "@created_at",
+                                "type": "text",
+                                "label": "created_at"
+                            },
+                            {
+                                "name": "@deleted_at",
+                                "type": "text",
+                                "label": "deleted_at"
+                            },
+                            {
+                                "name": "@status",
+                                "type": "text",
+                                "label": "status"
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "module": "google-drive:ActionUploadFile",
+            "version": 3,
+            "parameters": {
+                "account": 1032006
+            },
+            "mapper": {
+                "data": "{{9.data}}",
+                "title": "",
+                "convert": false,
+                "fileName": "{{9.fileName}}",
+                "folderId": "/13YrVQpOBj0BjBy4VrRdluAeYCKbFYH48/12k4ACJsF_tyPrGFOZQY2tR3ccVF0DDvm/1aonj5PLrf0YVS-LJamNyN0VlMTH_U7gg",
+                "destination": "personal"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "restore": {
+                    "account": {
+                        "label": "My Google connection (khyquer.oliveira@gmail.com)"
+                    },
+                    "convert": {
+                        "mode": "chose"
+                    },
+                    "folderId": {
+                        "mode": "chose",
+                        "path": [
+                            "Desafio ZG",
+                            "Input",
+                            "glosamin"
+                        ]
+                    },
+                    "destination": {
+                        "label": "My Drive"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "mean": "name",
+                        "name": "fileName",
+                        "type": "filename",
+                        "label": "File name",
+                        "required": true
+                    },
+                    {
+                        "mean": "data",
+                        "name": "data",
+                        "type": "buffer",
+                        "label": "Data",
+                        "required": true
+                    },
+                    {
+                        "name": "title",
+                        "type": "text",
+                        "label": "Title"
+                    },
+                    {
+                        "name": "convert",
+                        "type": "boolean",
+                        "label": "Convert a file",
+                        "required": true
+                    },
+                    {
+                        "name": "destination",
+                        "type": "select",
+                        "label": "Destination",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "personal",
+                                "shared"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "folderId",
+                        "type": "folder",
+                        "label": "Target folder",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": false,
+            "sequential": false,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.integromat.com"
+    }
+}

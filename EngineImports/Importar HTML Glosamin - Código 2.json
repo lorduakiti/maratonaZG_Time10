@@ -1,0 +1,812 @@
+{
+    "name": "Importar HTML Glosamin - Código 2",
+    "flow": [
+        {
+            "id": 1,
+            "module": "google-drive:TriggerNewFile",
+            "version": 3,
+            "parameters": {
+                "watch": "onlyNew",
+                "account": 1032006,
+                "folderId": "/13YrVQpOBj0BjBy4VrRdluAeYCKbFYH48/12k4ACJsF_tyPrGFOZQY2tR3ccVF0DDvm/1aonj5PLrf0YVS-LJamNyN0VlMTH_U7gg",
+                "mimeType": "all",
+                "maxResults": 2,
+                "formatDrawings": "image/jpeg",
+                "formatDocuments": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "formatSpreadsheets": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "formatPresentations": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "watch": {
+                        "label": "New files and all changes"
+                    },
+                    "account": {
+                        "label": "My Google connection (khyquer.oliveira@gmail.com)"
+                    },
+                    "folderId": {
+                        "path": [
+                            "Desafio ZG",
+                            "Input",
+                            "glosamin"
+                        ]
+                    },
+                    "mimeType": {
+                        "label": "All"
+                    },
+                    "formatDrawings": {
+                        "label": "JPEG"
+                    },
+                    "formatDocuments": {
+                        "label": "MS Word Document"
+                    },
+                    "formatSpreadsheets": {
+                        "label": "MS Excel"
+                    },
+                    "formatPresentations": {
+                        "label": "MS PowerPoint"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "mimeType",
+                        "type": "select",
+                        "label": "What files to watch",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "all",
+                                "application/vnd.google-apps.document",
+                                "application/vnd.google-apps.spreadsheet",
+                                "application/vnd.google-apps.presentation",
+                                "application/vnd.google-apps.drawing"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "watch",
+                        "type": "select",
+                        "label": "Watch",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "onlyNew",
+                                "allChanges"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "maxResults",
+                        "type": "uinteger",
+                        "label": "Maximum number of downloaded files",
+                        "required": true
+                    },
+                    {
+                        "name": "formatDocuments",
+                        "type": "select",
+                        "label": "Convert Google Documents files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "application/pdf",
+                                "application/vnd.oasis.opendocument.text",
+                                "text/html",
+                                "text/plain",
+                                "application/rtf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatSpreadsheets",
+                        "type": "select",
+                        "label": "Convert Google Spreadsheets files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "application/x-vnd.oasis.opendocument.spreadsheet",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatPresentations",
+                        "type": "select",
+                        "label": "Convert Google Slides files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatDrawings",
+                        "type": "select",
+                        "label": "Convert Google Drawings files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "image/jpeg",
+                                "image/png",
+                                "image/svg+xml",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "folderId",
+                        "type": "folder",
+                        "label": "Select the folder to be watched.",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "module": "google-drive:ActionGetFile",
+            "version": 3,
+            "parameters": {
+                "account": 1032006,
+                "formatDrawings": "image/jpeg",
+                "formatDocuments": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "formatSpreadsheets": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                "formatPresentations": "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+            },
+            "mapper": {
+                "id": "{{1.id}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0
+                },
+                "restore": {
+                    "account": {
+                        "label": "My Google connection (khyquer.oliveira@gmail.com)"
+                    },
+                    "formatDrawings": {
+                        "label": "JPEG"
+                    },
+                    "formatDocuments": {
+                        "label": "MS Word Document"
+                    },
+                    "formatSpreadsheets": {
+                        "label": "MS Excel"
+                    },
+                    "formatPresentations": {
+                        "label": "MS PowerPoint"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "formatDocuments",
+                        "type": "select",
+                        "label": "Convert Google Documents files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                "application/pdf",
+                                "application/vnd.oasis.opendocument.text",
+                                "text/html",
+                                "text/plain",
+                                "application/rtf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatSpreadsheets",
+                        "type": "select",
+                        "label": "Convert Google Spreadsheets files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                "application/x-vnd.oasis.opendocument.spreadsheet",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatPresentations",
+                        "type": "select",
+                        "label": "Convert Google Slides files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+                                "application/pdf"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "formatDrawings",
+                        "type": "select",
+                        "label": "Convert Google Drawings files to format",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "image/jpeg",
+                                "image/png",
+                                "image/svg+xml",
+                                "application/pdf"
+                            ]
+                        }
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "id",
+                        "type": "text",
+                        "label": "File ID",
+                        "required": true
+                    }
+                ],
+                "advanced": true
+            }
+        },
+        {
+            "id": 32,
+            "module": "util:FunctionIncrement",
+            "version": 1,
+            "parameters": {
+                "reset": "scenario"
+            },
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 600,
+                    "y": 0
+                },
+                "restore": {
+                    "reset": {
+                        "label": "Never"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "reset",
+                        "type": "select",
+                        "label": "Reset a value",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "run",
+                                "execution",
+                                "scenario"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "id": 27,
+            "module": "regexp:Parser",
+            "version": 1,
+            "parameters": {
+                "global": true,
+                "pattern": "<tr>((.|\\n|\\r)*?)<\\/tr>",
+                "multiline": true,
+                "sensitive": false,
+                "continueWhenNoRes": false
+            },
+            "mapper": {
+                "text": "{{3.data}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 900,
+                    "y": 0
+                },
+                "parameters": [
+                    {
+                        "name": "pattern",
+                        "type": "text",
+                        "label": "Pattern",
+                        "required": true
+                    },
+                    {
+                        "name": "global",
+                        "type": "boolean",
+                        "label": "Global match",
+                        "required": true
+                    },
+                    {
+                        "name": "sensitive",
+                        "type": "boolean",
+                        "label": "Case sensitive",
+                        "required": true
+                    },
+                    {
+                        "name": "multiline",
+                        "type": "boolean",
+                        "label": "Multiline",
+                        "required": true
+                    },
+                    {
+                        "name": "continueWhenNoRes",
+                        "type": "boolean",
+                        "label": "Continue the execution of the route even if the module finds no matches",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "text",
+                        "type": "text",
+                        "label": "Text"
+                    }
+                ],
+                "interface": [
+                    {
+                        "name": "$1",
+                        "type": "text",
+                        "label": "$1"
+                    },
+                    {
+                        "name": "$2",
+                        "type": "text",
+                        "label": "$2"
+                    },
+                    {
+                        "name": "i",
+                        "type": "uinteger",
+                        "label": "i"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 29,
+            "module": "http:ActionSendData",
+            "version": 3,
+            "parameters": {
+                "handleErrors": false
+            },
+            "filter": {
+                "name": "",
+                "conditions": [
+                    [
+                        {
+                            "a": "{{27.i}}",
+                            "b": "10",
+                            "o": "time:less"
+                        }
+                    ]
+                ]
+            },
+            "mapper": {
+                "ca": "",
+                "qs": [],
+                "url": "https://html2json.com/api/v1",
+                "data": "<table><tr>{{27.`$1`}}</tr></table>",
+                "gzip": true,
+                "method": "post",
+                "headers": [],
+                "timeout": "",
+                "authPass": "",
+                "authUser": "",
+                "bodyType": "raw",
+                "contentType": "text/html",
+                "shareCookies": false,
+                "parseResponse": true,
+                "followRedirect": true,
+                "useQuerystring": false,
+                "rejectUnauthorized": true
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1200,
+                    "y": 0
+                },
+                "restore": {
+                    "qs": {
+                        "mode": "chose",
+                        "items": []
+                    },
+                    "method": {
+                        "mode": "chose",
+                        "label": "POST"
+                    },
+                    "headers": {
+                        "mode": "chose",
+                        "items": []
+                    },
+                    "bodyType": {
+                        "label": "Raw"
+                    },
+                    "contentType": {
+                        "label": "HTML (text/html)"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "handleErrors",
+                        "type": "boolean",
+                        "label": "Evaluate all states as errors (except for 2xx and 3xx )",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "url",
+                        "type": "url",
+                        "label": "URL",
+                        "required": true
+                    },
+                    {
+                        "name": "method",
+                        "type": "select",
+                        "label": "Method",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "get",
+                                "head",
+                                "post",
+                                "put",
+                                "patch",
+                                "delete"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "headers",
+                        "spec": [
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Headers",
+                        "labels": {
+                            "add": "Add a header",
+                            "edit": "Edit a header"
+                        }
+                    },
+                    {
+                        "name": "qs",
+                        "spec": [
+                            {
+                                "name": "name",
+                                "type": "text",
+                                "label": "Name",
+                                "required": true
+                            },
+                            {
+                                "name": "value",
+                                "type": "text",
+                                "label": "Value"
+                            }
+                        ],
+                        "type": "array",
+                        "label": "Query String",
+                        "labels": {
+                            "add": "Add parameter",
+                            "edit": "Edit parameter"
+                        }
+                    },
+                    {
+                        "name": "bodyType",
+                        "type": "select",
+                        "label": "Body type",
+                        "validate": {
+                            "enum": [
+                                "raw",
+                                "x_www_form_urlencoded",
+                                "multipart_form_data"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "parseResponse",
+                        "type": "boolean",
+                        "label": "Parse response",
+                        "required": true
+                    },
+                    {
+                        "name": "authUser",
+                        "type": "text",
+                        "label": "User name"
+                    },
+                    {
+                        "name": "authPass",
+                        "type": "password",
+                        "label": "Password"
+                    },
+                    {
+                        "name": "timeout",
+                        "type": "uinteger",
+                        "label": "Timeout",
+                        "validate": {
+                            "max": 300,
+                            "min": 1
+                        }
+                    },
+                    {
+                        "name": "shareCookies",
+                        "type": "boolean",
+                        "label": "Share cookies with other HTTP modules",
+                        "required": true
+                    },
+                    {
+                        "name": "ca",
+                        "type": "cert",
+                        "label": "Self-signed certificate",
+                        "multiline": true
+                    },
+                    {
+                        "name": "rejectUnauthorized",
+                        "type": "boolean",
+                        "label": "Reject connections that are using unverified (self-signed) certificates",
+                        "required": true
+                    },
+                    {
+                        "name": "followRedirect",
+                        "type": "boolean",
+                        "label": "Follow redirect",
+                        "required": true
+                    },
+                    {
+                        "name": "useQuerystring",
+                        "type": "boolean",
+                        "label": "Disable serialization of multiple same query string keys as arrays",
+                        "required": true
+                    },
+                    {
+                        "name": "gzip",
+                        "type": "boolean",
+                        "label": "Request compressed content",
+                        "required": true
+                    },
+                    {
+                        "name": "contentType",
+                        "type": "select",
+                        "label": "Content type",
+                        "validate": {
+                            "enum": [
+                                "text/plain",
+                                "application/json",
+                                "application/xml",
+                                "text/xml",
+                                "text/html",
+                                "custom"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "buffer",
+                        "label": "Request content"
+                    }
+                ]
+            }
+        },
+        {
+            "id": 30,
+            "module": "postgres:InsertIntoTable",
+            "version": 2,
+            "parameters": {
+                "table": "\"public\".\"importacao_convenios\"",
+                "account": 1050177
+            },
+            "mapper": {
+                "@id": "",
+                "@nome": "{{29.data.data.tables[1].rows[1].cols[5].nodeValue}}",
+                "@source": "{{3.fileName}}",
+                "@convenio": "{{29.data.data.tables[1].rows[1].cols[1].nodeValue}}",
+                "@ng_prest": "{{29.data.data.tables[1].rows[1].cols[7].nodeValue}}",
+                "@matricula": "{{29.data.data.tables[1].rows[1].cols[4].nodeValue}}",
+                "@created_at": "{{now}}",
+                "@deleted_at": "",
+                "@senha_guia": "{{29.data.data.tables[1].rows[1].cols[8].nodeValue}}",
+                "@updated_at": "",
+                "@valor_pago": "{{29.data.data.tables[1].rows[1].cols[12].nodeValue}}",
+                "@id_convenio": "2",
+                "@numero_guia": "{{29.data.data.tables[1].rows[1].cols[6].nodeValue}}",
+                "@valor_glosa": "{{29.data.data.tables[1].rows[1].cols[13].nodeValue}}",
+                "@codigo_motivo": "{{29.data.data.tables[1].rows[1].cols[15].nodeValue}}",
+                "@codigo_produto": "{{29.data.data.tables[1].rows[1].cols[9].nodeValue}}",
+                "@data_pagamento": "{{29.data.data.tables[1].rows[1].cols[2].nodeValue}}",
+                "@lote_importacao": "{{32.i}}",
+                "@descricao_motivo": "{{29.data.data.tables[1].rows[1].cols[14].nodeValue}}",
+                "@numero_protocolo": "{{29.data.data.tables[1].rows[1].cols[3].nodeValue}}",
+                "@descricao_produto": "{{29.data.data.tables[1].rows[1].cols[10].nodeValue}}",
+                "@valor_apresentado": "{{29.data.data.tables[1].rows[1].cols[11].nodeValue}}"
+            },
+            "metadata": {
+                "designer": {
+                    "x": 1500,
+                    "y": 0
+                },
+                "restore": {
+                    "table": {
+                        "label": "public.importacao_convenios"
+                    },
+                    "account": {
+                        "label": "My PostgreSQL Time 10"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "account",
+                        "type": "account",
+                        "label": "Connection",
+                        "required": true
+                    },
+                    {
+                        "name": "table",
+                        "type": "select",
+                        "label": "Table",
+                        "required": true
+                    }
+                ],
+                "expect": [
+                    {
+                        "name": "@id",
+                        "type": "integer",
+                        "label": "id"
+                    },
+                    {
+                        "name": "@convenio",
+                        "type": "text",
+                        "label": "convenio"
+                    },
+                    {
+                        "name": "@data_pagamento",
+                        "type": "text",
+                        "label": "data_pagamento"
+                    },
+                    {
+                        "name": "@numero_protocolo",
+                        "type": "text",
+                        "label": "numero_protocolo"
+                    },
+                    {
+                        "name": "@matricula",
+                        "type": "text",
+                        "label": "matricula"
+                    },
+                    {
+                        "name": "@nome",
+                        "type": "text",
+                        "label": "nome"
+                    },
+                    {
+                        "name": "@numero_guia",
+                        "type": "text",
+                        "label": "numero_guia"
+                    },
+                    {
+                        "name": "@ng_prest",
+                        "type": "text",
+                        "label": "ng_prest"
+                    },
+                    {
+                        "name": "@senha_guia",
+                        "type": "text",
+                        "label": "senha_guia"
+                    },
+                    {
+                        "name": "@codigo_produto",
+                        "type": "text",
+                        "label": "codigo_produto"
+                    },
+                    {
+                        "name": "@descricao_produto",
+                        "type": "text",
+                        "label": "descricao_produto"
+                    },
+                    {
+                        "name": "@valor_apresentado",
+                        "type": "text",
+                        "label": "valor_apresentado"
+                    },
+                    {
+                        "name": "@valor_pago",
+                        "type": "text",
+                        "label": "valor_pago"
+                    },
+                    {
+                        "name": "@valor_glosa",
+                        "type": "text",
+                        "label": "valor_glosa"
+                    },
+                    {
+                        "name": "@descricao_motivo",
+                        "type": "text",
+                        "label": "descricao_motivo"
+                    },
+                    {
+                        "name": "@codigo_motivo",
+                        "type": "text",
+                        "label": "codigo_motivo"
+                    },
+                    {
+                        "name": "@created_at",
+                        "type": "text",
+                        "label": "created_at"
+                    },
+                    {
+                        "name": "@updated_at",
+                        "type": "text",
+                        "label": "updated_at"
+                    },
+                    {
+                        "name": "@source",
+                        "type": "text",
+                        "label": "source"
+                    },
+                    {
+                        "name": "@lote_importacao",
+                        "type": "text",
+                        "label": "lote_importacao"
+                    },
+                    {
+                        "name": "@id_convenio",
+                        "type": "integer",
+                        "label": "id_convenio"
+                    },
+                    {
+                        "name": "@deleted_at",
+                        "type": "text",
+                        "label": "deleted_at"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": false,
+            "sequential": true,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": true
+        },
+        "designer": {
+            "orphans": [],
+            "notes": [
+                {
+                    "id": 29,
+                    "text": "Coloquei um filtro no limitador, para não ter problemas",
+                    "filter": true
+                }
+            ]
+        },
+        "zone": "eu1.integromat.com"
+    }
+}
