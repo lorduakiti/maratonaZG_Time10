@@ -48,7 +48,11 @@ export class DashboardComponent implements OnInit {
   public importacao_convenios: any[];
   public importacao_guias: any[];
   public prestadores_servicos: any[];
+
+  public filtredImportcaoConvenios: any[];
   private query: QueryRef<any>;
+
+  public convenioSelecionado = 1;
 
   constructor(private apollo: Apollo) {
 
@@ -112,6 +116,15 @@ export class DashboardComponent implements OnInit {
 
     seq2 = 0;
   };
+
+
+  public filtraConvenio(id: number) {
+    this.convenioSelecionado = id;
+    this.filtredImportcaoConvenios = this.importacao_convenios.filter(x => x.id_convenio == id);
+
+  }
+
+
   ngOnInit() {
 
     console.log("as");
@@ -127,6 +140,9 @@ export class DashboardComponent implements OnInit {
       this.convenios = result.data.convenios;
 
       this.importacao_convenios = result.data.importacao_convenios;
+
+      this.filtredImportcaoConvenios = this.importacao_convenios.filter(x => x.id_convenio == 1);
+      this.convenioSelecionado = 1;
 
       this.importacao_guias = result.data.importacao_guias;
 
