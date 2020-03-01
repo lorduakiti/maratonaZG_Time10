@@ -56,6 +56,8 @@ export class DashboardComponent implements OnInit {
 
   public valorTotalGlosa = 0;
 
+  public valorTotalApresentado = 0;
+
   constructor(private apollo: Apollo) {
 
 
@@ -159,6 +161,16 @@ export class DashboardComponent implements OnInit {
 
         }
       )
+
+      this.importacao_guias.map(
+        x => {
+          if (parseInt(x.valorTotalGuia, 10)) {
+            this.valorTotalApresentado = this.valorTotalApresentado + parseInt(x.valorTotalGuia, 10);
+          }
+
+        }
+      )
+
 
 
 
