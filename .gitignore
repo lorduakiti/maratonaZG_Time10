@@ -9,6 +9,10 @@
 
 # dependencies
 /node_modules
+/Robos/robo_consolidacao/node_modules
+Robos/robo_consolidacao/node_modules/
+Robos/robo_consolidacao/node_modules/*
+FrontEnd/node_modules/*
 
 # profiling files
 chrome-profiler-events*.json
@@ -44,4 +48,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-FrontEnd/node_modules/*
