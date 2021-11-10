@@ -2,9 +2,9 @@
 Códigos do hackaton de dados da ZG de 2020.
 
 ## Time 10
-[Uákiti Pires](https://github.com/lorduakiti)
-[Khyquer Ronald](https://github.com/khyquer)
-[Thiago Augusto](https://github.com/wstagf)
+[Uákiti Pires](https://github.com/lorduakiti)  
+[Khyquer Ronald](https://github.com/khyquer)  
+[Thiago Augusto](https://github.com/wstagf)  
 
 
 ## Projeto Master Developer
@@ -47,9 +47,9 @@ Eles estão muito animados com este projeto e já demonstraram interesse em cont
 Tenha em mente que o nível de conciliação automática é determinante na aceitação do projeto.
 
 Estes são os ties dos três convênios que o Hospital Maria da Penha atende:
-http://convenios.zeroglosa.com.br/glosamax/
-http://convenios.zeroglosa.com.br/glosamin/
-http://convenios.zeroglosa.com.br/pagatudo/
+http://convenios.zeroglosa.com.br/glosamax/  
+http://convenios.zeroglosa.com.br/glosamin/  
+http://convenios.zeroglosa.com.br/pagatudo/  
 
 -----
 
@@ -82,21 +82,21 @@ Além da resolução do problema, há alguns requisitos que você deve observar 
 ### Convênio
 Os arquivos com o demonstrativo do convênio GlosaMax (disponibilizados no site) são XML com cabeçalhos detalhando as colunas existentes.
 Temos a representação de forma desnormalizada dos dados dos itens que serão pagos, com os seguintes campos:
-*convenio* - Nome do convênio
-*data_pagamento* - Data em que o pagamento foi realizado
-*número_protocolo* - Protocolo do pagamento
-*matricula* - Matrícula do beneficiário
-*nome* - Nome do beneficiário
-*numero_guia* - Identificação da guia atribuída pelo convênio
-*ng_prest* - Identificação da guia atribuída pelo hospital
-*senha_guia* - Senha de autorização da guia
-*codigo_produto* - Código do produto
-*descricao_produto* - Descrição do produto
-*valor_apresentado* - Valor cobrado pelo hospital
-*valor_pago* - Valor pago pelo convênio
-*valor_glosa* - Valor da glosa
-*descricao_motivo* - Descrição do motivo da glosa
-*codigo_motivo* - Código do motivo da glosa
+*convenio* - Nome do convênio  
+*data_pagamento* - Data em que o pagamento foi realizado  
+*número_protocolo* - Protocolo do pagamento   
+*matricula* - Matrícula do beneficiário  
+*nome* - Nome do beneficiário  
+*numero_guia* - Identificação da guia atribuída pelo convênio   
+*ng_prest* - Identificação da guia atribuída pelo hospital  
+*senha_guia* - Senha de autorização da guia  
+*codigo_produto* - Código do produto  
+*descricao_produto* - Descrição do produto  
+*valor_apresentado* - Valor cobrado pelo hospital  
+*valor_pago* - Valor pago pelo convênio  
+*valor_glosa* - Valor da glosa  
+*descricao_motivo* - Descrição do motivo da glosa  
+*codigo_motivo* - Código do motivo da glosa  
 
 -----
 
